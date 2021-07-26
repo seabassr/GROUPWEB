@@ -9,22 +9,6 @@ router.get('/', (req, res) => {
     res.render('index');
 });
 
-router.get('/experience', (req, res) => {
-    res.render('experience');
-});
-
-router.get('/skills', (req, res) => {
-    res.render('skills');
-});
-
-router.get('/education', (req, res) => {
-    res.render('education');
-});
-
-router.get('/lifestyle', (req, res) => {
-    res.render('lifestyle');
-});
-
 router.get('/contact', (req, res) => {
     res.render('contact');
 });
@@ -75,31 +59,5 @@ router.post('/submitArticle', (req, res) => {
         })
         .catch(err => console.log(err));
 });
-
-/* router.post('/submitContact', (req, res) => {
-    const fname = req.body.fname;
-    const lname = req.body.lname;
-    const email = req.body.email;
-    const subject = req.body.subject;
-    const comment = req.body.comment;
-
-    const contact = new Contact(fname, lname, email, subject, comment);
-    contact.save();
-
-    res.render('submitContact', {contact: contact});
-}); */
-
-/* router.post('/submitArticle', (req, res) => {
-    const title = req.body.title;
-    const content = req.body.content;
-    const date = new Date().toLocaleString();
-
-    const article = new Article(title, date, content);
-    article.save();
-
-    const articles = article.findAll();
-
-    res.render('submitArticle', {articles: articles});
-}); */
 
 module.exports = router;

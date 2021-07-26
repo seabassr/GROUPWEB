@@ -1,4 +1,3 @@
-// Use a schema model
 const mongoose = require('mongoose');
 
 var articleSchema = new mongoose.Schema({
@@ -17,24 +16,3 @@ var articleSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model('Article', articleSchema);
-
-/* Class model
-const articles = [];
-
-class Article {
-    constructor(title, date, content) {
-        this.title = title;
-        this.date = date;
-        this.content = content;
-    }
-
-    save() {
-        articles.push(this);
-    }
-
-    findAll() {
-        return articles;
-    }
-}
-
-module.exports = Article; */

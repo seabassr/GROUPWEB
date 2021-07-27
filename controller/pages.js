@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const Contact = require('./models/contact');
+//const Contact = require('./models/contact');
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -21,7 +21,7 @@ router.get('/weapons', (req, res) => {
 });
 
 router.post('/submitContact', (req, res) => {
-    const contact = new Contact ({
+    /*const contact = new Contact ({
         fname: req.body.fname,
         lname: req.body.lname,
         email: req.body.email,
@@ -33,7 +33,7 @@ router.post('/submitContact', (req, res) => {
         .then(result => {
             res.render('submitContact');
         })
-        .catch(err => console.log(err));
+        .catch(err => console.log(err));*/
 });
 
 module.exports = router;

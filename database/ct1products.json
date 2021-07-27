@@ -1,0 +1,19 @@
+[{
+  "_id": {
+    "$oid": "60ff0e7a80c37dca90752fa2"
+  },
+  "title": "Synthread Jumpsuit",
+  "price": 35,
+  "quantity": 32,
+  "img": "brownjumpsuit",
+  "description": "A durable jumpsuit."
+},{
+  "_id": {
+    "$oid": "610055b6c8563e083e88e581"
+  },
+  "title": "Heavy Armor",
+  "price": 825,
+  "quantity": 6,
+  "img": "heavyarmor",
+  "description": "A full suit of heavy armor."
+}]

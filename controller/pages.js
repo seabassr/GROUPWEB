@@ -2,18 +2,23 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 //const Contact = require('./models/contact');
-const Clothing = require('../models/clothing');
+const Apparel = require('../models/apparel');
 const router = express.Router();
 
 router.get('/', (req, res) => {
     res.render('index');
 });
 
-router.get('/clothing', (req, res) =>{
+router.get('/apparel', (req, res) =>{
 
-    Clothing.find()
+    Apparel.find()
         .then(results =>{
-            res.render('clothing', {products: results});
+            res.render('apparel',
+                {
+                    products: results,
+                    imgcategory: "ct1"
+                }
+            );
         })
     
 });

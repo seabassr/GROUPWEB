@@ -8,8 +8,16 @@ router.get('/', (req, res) => {
     res.render('index');
 });
 
-router.get('/contact', (req, res) => {
-    res.render('contact');
+router.get('/clothing', (req, res) => {
+    res.render('clothing');
+});
+
+router.get('/vehicles', (req, res) => {
+    res.render('vehicles');
+});
+
+router.get('/weapons', (req, res) => {
+    res.render('weapons');
 });
 
 router.post('/submitContact', (req, res) => {
@@ -17,7 +25,7 @@ router.post('/submitContact', (req, res) => {
         fname: req.body.fname,
         lname: req.body.lname,
         email: req.body.email,
-        reason: req.body.reason,
+        subject: req.body.subject,
         comment: req.body.comment
     });
 

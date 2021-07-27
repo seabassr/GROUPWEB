@@ -10,7 +10,7 @@ var contactSchema = new mongoose.Schema({
     email: {
         type: String
     },
-    reason: {
+    subject: {
         type: String
     },
     comment: {

@@ -20,20 +20,8 @@ router.get('/weapons', (req, res) => {
     res.render('weapons');
 });
 
-router.post('/submitContact', (req, res) => {
-    /*const contact = new Contact ({
-        fname: req.body.fname,
-        lname: req.body.lname,
-        email: req.body.email,
-        subject: req.body.subject,
-        comment: req.body.comment
-    });
-
-    Contact.collection.insertOne(contact)
-        .then(result => {
-            res.render('submitContact');
-        })
-        .catch(err => console.log(err));*/
+router.post('/contactus', (req, res) => {
+    res.render('contactus');
 });
 
 module.exports = router;

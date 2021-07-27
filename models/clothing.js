@@ -1,21 +1,21 @@
 const mongoose = require('mongoose');
 
-var clothingSchema = new mongoose.Schema({
-    fname: {
+var productSchema = new mongoose.Schema({
+    title: {
         type: String
     },
-    lname: {
+    price: {
+        type: Number
+    },
+    quantity: {
+        type: Number
+    },
+    img: {
         type: String
     },
-    email: {
-        type: String
-    },
-    subject: {
-        type: String
-    },
-    comment: {
+    description: {
         type: String
     }
 });
 
-module.exports = mongoose.model('Clothing', clothingSchema);
+module.exports = mongoose.model('ct1product', productSchema);

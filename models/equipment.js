@@ -18,4 +18,4 @@ var productSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('ct2product', productSchema);
+module.exports = mongoose.model('ct3product', productSchema);

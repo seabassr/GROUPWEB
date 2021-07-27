@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const pagesRouter = require('./controller/pages');
 const mongoose = require('mongoose');
 const app = express();
+//comment1
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended:true}));

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-var contactSchema = new mongoose.Schema({
+var vehiclesSchema = new mongoose.Schema({
     fname: {
         type: String
     },
@@ -18,4 +18,4 @@ var contactSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('Contact', contactSchema);
+module.exports = mongoose.model('Vehicles', vehiclesSchema);

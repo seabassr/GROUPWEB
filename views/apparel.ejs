@@ -4,33 +4,28 @@
 <p><h2><strong>Our Apparel</strong></h2></p>
 <hr>
 
-<div class="container">
-    <div class="row align-items-start">
+<div class="containter">
+    <div class="row">
         <% for(let p of products) { %>
-            <!-- Product 1 -->
-            <div class="col-md-4">
-                <div class="card h-100">
-                    <!--Card image-->
-                    <div class="view overlay">
-                        <img class="card-img-top" src="img/<%= imgcategory %>/<%= p.img %>.jpg"
-                            alt="Card image cap">
-                        <a href="#!">
-                            <div class="mask rgba-white-slight"></div>
-                        </a>
-                    </div>
-            
-                    <!--Card content-->
-                    <div class="card-body">
-                        <!--Title-->
-                        <h4 class="card-title"><%= p.title %></h4>
-                        <!--Text-->
-                        <p class="card-text"><%= p.description %></p>
-                        <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-                        <button type="button" class="btn btn-light-blue btn-md">Add to nonexistant cart</button>
-                    </div>
+        <div class="col-md-3">
+            <!-- Card -->
+            <div class="card">
+                <!-- Card image -->
+                <img class="card-img-top" src="img/<%= imgcategory %>/<%= p.img %>.jpg" alt="Card image cap">
+                <!-- Card content -->
+                <div class="card-body">
+                    <!-- Title -->
+                    <h4 class="card-title"><a><%= p.title %></a></h4>
+                    <h5 class="card-title"><a><%= p.price %></a></h5>
+                    <h5 class="card-title"><a><%= p.quantity %></a></h5>
+                    <!-- Text -->
+                    <p class="card-text"><%= p.description %>.</p>
+                    <!-- Button -->
+                    <a href="#" class="btn btn-primary">Add to nonexistant cart</a>
                 </div>
-                <!-- Card -->
             </div>
+            <!-- Card -->
+        </div>
         <% } %>
     </div>
 </div>

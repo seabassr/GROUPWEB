@@ -23,6 +23,14 @@ router.get('/apparel', (req, res) =>{
         })
 });
 
+router.get('/apparel/:prodId', (req, res) => {
+    Apparel.findById(req.params.prodId)
+        .then( result => {
+            res.render('product-details', {prod: result, prodCategory: "ct1"});
+        })
+        .catch(err => console.log(err));
+})
+
 router.get('/vehicles', (req, res) => {
     Vehicles.find()
         .then(results =>{

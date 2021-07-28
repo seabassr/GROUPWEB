@@ -1,6 +1,28 @@
 body {
-    background-color: black;
+    background-color: white;
 }
 h2 {
-    color: white;
+    color: black;
+}
+table {
+    border:1px solid black;
+    overflow:visible;
+    height:500px;
+    width:300px;
+    max-height:500px;
+    max-width:300px;
+    display:block;
+}
+img.product-detail {
+    border:1px solid black;
+    height:400px;
+    width:500px;
+    max-height:400px;
+    max-width:500px;
+    object-fit: contain;
+}
+img.showcase{
+    height: 400px;
+    max-height:400px;
+    object-fit: contain;
 }

@@ -1,7 +1,7 @@
 <%- include('layouts/header.ejs') %>
 <%- include('layouts/navbar.ejs') %>
 
-<div class="containter">
+<div class="container">
     <h2><strong><%= pageTitle %></strong></h2><hr color="white">
     <div class="row">
         <% for(let p of products) { %>
@@ -13,9 +13,8 @@
                 <!-- Card content -->
                 <div class="card-body">
                     <!-- Title -->
-                    <h4 class="card-title"><a><%= p.title %></a></h4>
+                    <a href="/apparel/<%= p._id %>"><h4 class="card-title"><%= p.title %></h4></a>
                     <h5 class="card-title"><a>$<%= p.price %></a></h5>
-                    <h5 class="card-title"><a>Stock: <%= p.quantity %></a></h5>
                     <!-- Text -->
                     <p class="card-text"><%= p.description %>.</p>
                     <!-- Button -->

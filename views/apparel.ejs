@@ -9,11 +9,11 @@
             <!-- Card -->
             <div class="card">
                 <!-- Card image -->
-                <a href="/apparel/<%= p._id %>"><img class="card-img-top showcase" src="/img/<%= imgcategory %>/<%= p.img %>.jpg" alt="Card image cap"></a>
+                <a href="img/<%= imgcategory %>/<%= p.img %>.jpg"><img class="card-img-top showcase" src="/img/<%= imgcategory %>/<%= p.img %>.jpg" alt="Card image cap"></a>
                 <!-- Card content -->
                 <div class="card-body">
                     <!-- Title -->
-                    <h4 class="card-title"><a><%= p.title %></a></h4>
+                    <a href="/apparel/<%= p._id %>"><h4 class="card-title"><%= p.title %></h4></a>
                     <h5 class="card-title"><a>$<%= p.price %></a></h5>
                     <!-- Text -->
                     <p class="card-text"><%= p.description %></p>

@@ -2,20 +2,20 @@
   "_id": {
     "$oid": "60ff0e7a80c37dca90752fa2"
   },
-  "title": "Synthread Jumpsuit",
-  "price": 35,
-  "quantity": 32,
+  "title": "Hyperweave Jumpsuit",
+  "price": 82,
+  "quantity": 24,
   "img": "brownjumpsuit",
-  "description": "A durable jumpsuit."
+  "description": "A nearly unbreakable yet breathable jumpsuit."
 },{
   "_id": {
-    "$oid": "610055b6c8563e083e88e581"
+    "$oid": "6101df704c61fbbc65441296"
   },
-  "title": "Heavy Armor",
-  "price": 825,
-  "quantity": 6,
-  "img": "heavyarmor",
-  "description": "A full suit of heavy armor."
+  "title": "Synthread Jumpsuit",
+  "price": 24,
+  "quantity": 12,
+  "img": "c0384df4443e39153f356fb8bbc28730",
+  "description": "Like hyperweave but not as cool."
 },{
   "_id": {
     "$oid": "6101ca1c4c61fbbc6544128e"
@@ -24,7 +24,16 @@
   "price": 1655,
   "quantity": 17,
   "img": "SamBrown-voidstar2",
-  "description": "For people who well under pressure."
+  "description": "For people who work well under pressure."
+},{
+  "_id": {
+    "$oid": "610055b6c8563e083e88e581"
+  },
+  "title": "Armored EVA Suit",
+  "price": 2825,
+  "quantity": 6,
+  "img": "heavyarmor",
+  "description": "For people who work well under heat AND pressure."
 },{
   "_id": {
     "$oid": "6101cd4a4c61fbbc6544128f"
@@ -52,4 +61,31 @@
   "quantity": 4,
   "img": "abrar-khan-cat-stronomer-combo",
   "description": "Blue like those CYBER security stock images."
+},{
+  "_id": {
+    "$oid": "6101d9084c61fbbc65441293"
+  },
+  "title": "Energizing Gloves",
+  "price": 319,
+  "quantity": 4,
+  "img": "5ef89721d3d5a_thumb900",
+  "description": "Power in the palm of your hand."
+},{
+  "_id": {
+    "$oid": "6101daed4c61fbbc65441294"
+  },
+  "title": "Officer's Uniform",
+  "price": 215,
+  "quantity": 0,
+  "img": "a6bebf668d94e19e67766342450b1335",
+  "description": "This product is made to order. Contact us!"
+},{
+  "_id": {
+    "$oid": "6101ddae4c61fbbc65441295"
+  },
+  "title": "Solar Panel Necklace",
+  "price": 19,
+  "quantity": 3,
+  "img": "41632_4_800",
+  "description": "Lighten up with these heavy panels."
 }]

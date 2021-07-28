@@ -26,3 +26,6 @@ img.showcase{
     max-height:400px;
     object-fit: contain;
 }
+img.profile{
+    border-radius: 100%;
+}

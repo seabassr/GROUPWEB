@@ -17,7 +17,7 @@ router.get('/apparel', (req, res) =>{
                 {
                     products: results,
                     imgcategory: "ct1",
-                    pageTitle: "Our Apparel"
+                    pageTitle: "Apparel"
                 }
             );
         })
@@ -74,7 +74,11 @@ router.get('/equipment/:prodId', (req, res) => {
 })
 
 router.get('/contactus', (req, res) => {
-    res.render('contactus');
+    res.render('contactus',
+        {
+            pageTitle: "Contact Us"
+        }
+    );
 });
 
 module.exports = router;

@@ -1,0 +1,46 @@
+[{
+  "_id": {
+    "$oid": "6101df66282021afd292cbb0"
+  },
+  "title": "A-Wing Fighter",
+  "price": "25000",
+  "quantity": "10",
+  "img": "a-wing",
+  "description": "Great on speed."
+},{
+  "_id": {
+    "$oid": "6101e097282021afd292cbc2"
+  },
+  "title": "Y-Wing Fighter",
+  "price": "20000",
+  "quantity": "8",
+  "img": "y-wing",
+  "description": "Good milage and price."
+},{
+  "_id": {
+    "$oid": "6101e0a9282021afd292cbc3"
+  },
+  "title": "Gungan Bongo Submarine",
+  "price": "35000",
+  "quantity": "5",
+  "img": "gungan-bongo",
+  "description": "Good for driving in water, and comes with a tail."
+},{
+  "_id": {
+    "$oid": "6101e0ac282021afd292cbc4"
+  },
+  "title": "Naboo Royal Starship",
+  "price": "125000",
+  "quantity": "5",
+  "img": "naboo-royal",
+  "description": "The most luxurios vehicle anyone can buy."
+},{
+  "_id": {
+    "$oid": "6101e0af282021afd292cbc5"
+  },
+  "title": "Naboo N-1 Starfighter",
+  "price": "85000",
+  "quantity": "8",
+  "img": "naboo-n1",
+  "description": "Good speed, and some luxury visuals."
+}]

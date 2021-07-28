@@ -11,38 +11,39 @@ router.get('/', (req, res) => {
 });
 
 router.get('/apparel', (req, res) =>{
-
     Apparel.find()
         .then(results =>{
             res.render('apparel',
                 {
                     products: results,
-                    imgcategory: "ct1"
+                    imgcategory: "ct1",
+                    pageTitle: "Our Apparel"
                 }
             );
         })
-    
 });
 
 router.get('/vehicles', (req, res) => {
-    Apparel.find()
+    Vehicles.find()
         .then(results =>{
             res.render('vehicles',
                 {
                     products: results,
-                    imgcategory: "ct2"
+                    imgcategory: "ct2",
+                    pageTitle: "Vehicles"
                 }
             );
         })
 });
 
 router.get('/equipment', (req, res) => {
-    Apparel.find()
+    Equipment.find()
         .then(results =>{
             res.render('equipment',
                 {
                     products: results,
-                    imgcategory: "ct3"
+                    imgcategory: "ct3",
+                    pageTitle: "Equipment"
                 }
             );
         })

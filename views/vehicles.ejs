@@ -5,18 +5,18 @@
     <h2><strong><%= pageTitle %></strong></h2><hr color="white">
     <div class="row">
         <% for(let p of products) { %>
-        <div class="col-md-3">
+        <div class="col-md-4">
             <!-- Card -->
-            <div class="card">
+            <div class="card" style="margin-bottom: 25px;">
                 <!-- Card image -->
-                <a href="img/<%= imgcategory %>/<%= p.img %>.jpg"><img class="card-img-top" src="img/<%= imgcategory %>/<%= p.img %>.jpg" alt="Card image cap"></a>
+                <a href="img/<%= imgcategory %>/<%= p.img %>.jpg"><img class="card-img-top showcase" src="/img/<%= imgcategory %>/<%= p.img %>.jpg" alt="Card image cap"></a>
                 <!-- Card content -->
                 <div class="card-body">
                     <!-- Title -->
-                    <a href="/apparel/<%= p._id %>"><h4 class="card-title"><%= p.title %></h4></a>
+                    <a href="/vehicles/<%= p._id %>"><h4 class="card-title" style="min-height: 0px;"><%= p.title %></h4></a>
                     <h5 class="card-title"><a>$<%= p.price %></a></h5>
                     <!-- Text -->
-                    <p class="card-text"><%= p.description %>.</p>
+                    <p class="card-text" style="min-height: 45px;"><%= p.description %></p>
                     <!-- Button -->
                     <a href="#" class="btn btn-primary">Add to nonexistant cart</a>
                 </div>

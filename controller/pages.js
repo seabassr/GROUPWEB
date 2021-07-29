@@ -17,7 +17,7 @@ router.get('/apparel', (req, res) =>{
                 {
                     products: results,
                     imgcategory: "ct1",
-                    pageTitle: "Our Apparel"
+                    pageTitle: "Apparel"
                 }
             );
         })
@@ -44,6 +44,14 @@ router.get('/vehicles', (req, res) => {
         })
 });
 
+router.get('/vehicles/:prodId', (req, res) => {
+    Vehicles.findById(req.params.prodId)
+        .then( result => {
+            res.render('product-details', {prod: result, prodCategory: "ct2"});
+        })
+        .catch(err => console.log(err));
+})
+
 router.get('/equipment', (req, res) => {
     Equipment.find()
         .then(results =>{
@@ -57,8 +65,20 @@ router.get('/equipment', (req, res) => {
         })
 });
 
+router.get('/equipment/:prodId', (req, res) => {
+    Equipment.findById(req.params.prodId)
+        .then( result => {
+            res.render('product-details', {prod: result, prodCategory: "ct3"});
+        })
+        .catch(err => console.log(err));
+})
+
 router.get('/contactus', (req, res) => {
-    res.render('contactus');
+    res.render('contactus',
+        {
+            pageTitle: "Contact Us"
+        }
+    );
 });
 
 module.exports = router;

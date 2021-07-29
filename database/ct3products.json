@@ -18,6 +18,15 @@
   "description": "Used for hacking."
 },{
   "_id": {
+    "$oid": "61020145e7506b0b6a45fb32"
+  },
+  "title": "Medical Container",
+  "price": 225,
+  "quantity": 100,
+  "img": "SyringeStandardFull",
+  "description": "Contains -checks notes- medical."
+},{
+  "_id": {
     "$oid": "6101fe24e7506b0b6a45fb2b"
   },
   "title": "Ammo Box",
@@ -56,7 +65,7 @@
   "_id": {
     "$oid": "6101ffc4e7506b0b6a45fb2f"
   },
-  "title": "DupleX0R CYpher",
+  "title": "DupleX0R Cipher",
   "price": 800,
   "quantity": 9,
   "img": "RazorbackCipher",
@@ -79,13 +88,4 @@
   "quantity": 3,
   "img": "RivenCipher",
   "description": "Okay but what if YOU were the aliens???"
-},{
-  "_id": {
-    "$oid": "61020145e7506b0b6a45fb32"
-  },
-  "title": "Medical Container",
-  "price": 225,
-  "quantity": 100,
-  "img": "SyringeStandardFull",
-  "description": "Contains -checks notes- medical."
 }]

@@ -6,7 +6,7 @@
   "price": 465,
   "quantity": 18,
   "img": "LifeSupportCapsule",
-  "description": "Capsule that realeases gases to support organic life."
+  "description": "Capsule that releases gases to support organic life."
 },{
   "_id": {
     "$oid": "6101f975e7506b0b6a45fb26"

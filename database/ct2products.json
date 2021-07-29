@@ -33,7 +33,7 @@
   "price": "125000",
   "quantity": "5",
   "img": "naboo-royal",
-  "description": "The most luxurios vehicle anyone can buy."
+  "description": "The most luxurious vehicle anyone can buy."
 },{
   "_id": {
     "$oid": "6101e0af282021afd292cbc5"
@@ -78,7 +78,7 @@
   "price": "250000",
   "quantity": "3",
   "img": "millennium",
-  "description": "Speed + enough space for a small crew."
+  "description": "Speed and enough space for a small crew."
 },{
   "_id": {
     "$oid": "6101f7d8090e0cccc96d3daf"

@@ -43,4 +43,49 @@
   "quantity": "8",
   "img": "naboo-n1",
   "description": "Good speed, and some luxury visuals."
+},{
+  "_id": {
+    "$oid": "6101f7cc090e0cccc96d3dab"
+  },
+  "title": "Tantive IV",
+  "price": "150000",
+  "quantity": "4",
+  "img": "tantive",
+  "description": "A large vehicle that allows you to carry a whole crew."
+},{
+  "_id": {
+    "$oid": "6101f7d1090e0cccc96d3dac"
+  },
+  "title": "Snowspeeder",
+  "price": "50000",
+  "quantity": "8",
+  "img": "snowspeeder",
+  "description": "Did you say extreme speed?"
+},{
+  "_id": {
+    "$oid": "6101f7d4090e0cccc96d3dad"
+  },
+  "title": "X-Wing Fighter",
+  "price": "55000",
+  "quantity": "6",
+  "img": "x-wing",
+  "description": "The most popular vehicle in the galaxy."
+},{
+  "_id": {
+    "$oid": "6101f7d6090e0cccc96d3dae"
+  },
+  "title": "Millennium Falcon",
+  "price": "250000",
+  "quantity": "3",
+  "img": "millennium",
+  "description": "Speed + enough space for a small crew."
+},{
+  "_id": {
+    "$oid": "6101f7d8090e0cccc96d3daf"
+  },
+  "title": "Death Star",
+  "price": "100000000",
+  "quantity": "1",
+  "img": "death",
+  "description": "A starship with enough space for your whole neighborhood."
 }]

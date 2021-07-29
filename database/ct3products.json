@@ -1,19 +1,19 @@
 [{
   "_id": {
-    "$oid": "60ff0e7a80c37dca90752fa2"
+    "$oid": "6101dc5be7506b0b6a45fb24"
   },
-  "title": "Synthread Jumpsuit",
-  "price": 35.00,
-  "quantity": 32,
-  "img": "brownjumpsuit",
-  "description": "A durable jumpsuit."
+  "title": "Life Support Capsule",
+  "price": 465,
+  "quantity": 18,
+  "img": "LifeSupportCapsule",
+  "description": "Capsule that realeases gases to support organic life"
 },{
   "_id": {
-    "$oid": "610055b6c8563e083e88e581"
+    "$oid": "6101f975e7506b0b6a45fb26"
   },
-  "title": "Heavy Armor",
-  "price": 825.00,
-  "quantity": 6,
-  "img": "heavyarmor",
-  "description": "A full suit of heavy armor."
+  "title": "Cipher",
+  "price": 500,
+  "quantity": 463,
+  "img": "cipher",
+  "description": "Used for hacking"
 }]

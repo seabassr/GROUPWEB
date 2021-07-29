@@ -6,7 +6,7 @@
   "price": 465,
   "quantity": 18,
   "img": "LifeSupportCapsule",
-  "description": "Capsule that realeases gases to support organic life"
+  "description": "Capsule that realeases gases to support organic life."
 },{
   "_id": {
     "$oid": "6101f975e7506b0b6a45fb26"
@@ -15,5 +15,77 @@
   "price": 500,
   "quantity": 463,
   "img": "cipher",
-  "description": "Used for hacking"
+  "description": "Used for hacking."
+},{
+  "_id": {
+    "$oid": "6101fe24e7506b0b6a45fb2b"
+  },
+  "title": "Ammo Box",
+  "price": 250,
+  "quantity": 1250,
+  "img": "Ammo_Box",
+  "description": "Ammunition for armaments."
+},{
+  "_id": {
+    "$oid": "6101fe7de7506b0b6a45fb2c"
+  },
+  "title": "First Aid",
+  "price": 50,
+  "quantity": 600,
+  "img": "LargeHealthRestore",
+  "description": "First Aid Kit. Very essential!"
+},{
+  "_id": {
+    "$oid": "6101fec9e7506b0b6a45fb2d"
+  },
+  "title": "Motion Spotter",
+  "price": 650,
+  "quantity": 98,
+  "img": "MotionSpotter",
+  "description": "Used for tracking motion of targets. Buy now!"
+},{
+  "_id": {
+    "$oid": "6101ff46e7506b0b6a45fb2e"
+  },
+  "title": "Nano Armor Kit",
+  "price": 1250,
+  "quantity": 6,
+  "img": "NanoArmorKit",
+  "description": "Repair your armor!"
+},{
+  "_id": {
+    "$oid": "6101ffc4e7506b0b6a45fb2f"
+  },
+  "title": "DupleX0R CYpher",
+  "price": 800,
+  "quantity": 9,
+  "img": "RazorbackCipher",
+  "description": "I'm either getting in, or I'm not getting in."
+},{
+  "_id": {
+    "$oid": "61020032e7506b0b6a45fb30"
+  },
+  "title": "Recon Detection Device",
+  "price": 750,
+  "quantity": 43,
+  "img": "ReconDetectionDevice",
+  "description": "Tracking enemies, but from afar!"
+},{
+  "_id": {
+    "$oid": "610200fbe7506b0b6a45fb31"
+  },
+  "title": "Alien Cipher",
+  "price": 1600,
+  "quantity": 3,
+  "img": "RivenCipher",
+  "description": "Okay but what if YOU were the aliens???"
+},{
+  "_id": {
+    "$oid": "61020145e7506b0b6a45fb32"
+  },
+  "title": "Medical Container",
+  "price": 225,
+  "quantity": 100,
+  "img": "SyringeStandardFull",
+  "description": "Contains -checks notes- medical."
 }]

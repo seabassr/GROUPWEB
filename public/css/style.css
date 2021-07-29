@@ -1,5 +1,7 @@
 body {
-    background-color: white;
+    height: 100%;
+    background-color: Gainsboro;
+    background-image: linear-gradient(Gainsboro, white, Gainsboro);
 }
 h2 {
     color: black;
@@ -28,4 +30,31 @@ img.showcase{
 }
 img.profile{
     border-radius: 100%;
+}
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.rotateRight {
+    animation: rotation 30s infinite, opac 10s reverse;
+}
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
+.opacityOut {
+    animation:opac 10s;
+}
+.opacityIn {
+    animation:opac 10s reverse;
+}
+@keyframes opac {
+    0%   {opacity:1}
+    99%  {opacity:0}
 }

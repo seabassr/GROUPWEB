@@ -18,7 +18,11 @@
                     <!-- Text -->
                     <p class="card-text" style="min-height: 45px;"><%= p.description %></p>
                     <!-- Button -->
-                    <a href="#" class="btn btn-primary">Add to nonexistant cart</a>
+                    <form action="/add-cart" method="POST">
+                        <input type="hidden" name="id" value="<%= p._id %>">
+                        <input type="hidden" name="catId" value="vehicles">
+                        <button type="submit" name="btn btn-outline-default btn-rounded waves-effect">Add to nonexistant cart</button>
+                    </form>
                 </div>
             </div>
             <!-- Card -->

@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const Apparel = require('../models/apparel');
 const Vehicles = require('../models/vehicles');
 const Equipment = require('../models/equipment');
+const Cart = require('../models/cart');
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -80,5 +81,24 @@ router.get('/contactus', (req, res) => {
         }
     );
 });
+
+router.post('/add-cart', (req, res) => {
+    const itemId = req.body.id;
+    var prod = Apparel;
+
+    if (req.body.catId = 'vehicles') {
+        prod = Vehicles;
+    }
+    else if (req.body.catId = 'equipment') {
+        prod = Equipment;
+    }
+
+    prod.findById(itemId)
+        .then(result => {
+            var item = {title: result.title, price: result.price, quantity: 1, img: result.img};
+            Cart.collection.insertOne(item);
+        })
+        .catch(err => console.log(err));
+})
 
 module.exports = router;

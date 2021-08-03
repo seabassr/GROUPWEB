@@ -95,10 +95,20 @@ router.post('/add-cart', (req, res) => {
 
     prod.findById(itemId)
         .then(result => {
-            var item = {title: result.title, price: result.price, quantity: 1, img: result.img};
-            Cart.collection.insertOne(item);
+            Cart.findOneAndUpdate({itemId: itemId}, {$inc: {quantity: 1}},
+                function(err, doc) {
+                    if(err) {
+                        console.log("err");
+                    }
+                    if(doc == null) {
+                        var item = {itemId: itemId, title: result.title, price: result.price, quantity: 1, img: result.img};
+                        Cart.collection.insertOne(item);
+                    }
+                    
+            });
+            console.log(item);
         })
         .catch(err => console.log(err));
-})
+});
 
 module.exports = router;

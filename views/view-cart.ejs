@@ -2,9 +2,9 @@
 <%- include('layouts/navbar.ejs') %>
 
 <div class="container">
+    <br><h4><strong><%= pageTitle %></strong></h4><hr color="white">
     <div class="col-md-9">
-        <br><h4><strong><%= pageTitle %></strong></h4><hr color="white">
-        <table class="table">
+        <table class="table col-md-9">
             <thead>
                 <tr>
                     <th scope="col">Image</th>
@@ -15,11 +15,22 @@
                 </tr>
             </thead>
             <tbody>
-                <% let totalPrice = 0; for (let p of products) { %>
+                <% let totalPrice = 0; %>
+                <% for (let p of products) { %>
                 <tr>
                     <td></td>
                     <td><%= p.title %></td>
-                    <td><%= p.quantity %></td>
+                    <td>
+                        <!-- START Quantity magic stuff -->
+                        <form id="quantity-<%= p.itemId %>" action="/change-cart-quantity/<%= p.itemId %>" method="POST">
+                            <input type="number" class="hide-arrows" name="newQuantity"
+                                min="1" max="999" size="2" value="<%= p.quantity %>"
+                                onchange="document.getElementById('quantity-<%= p.itemId %>').submit();"
+                            >
+                            <input type="hidden" name="itemId" value="<%= p.itemId %>">
+                        </form>
+                        <!-- END Quantity magic stuff -->
+                    </td>
                     <td><%= (p.price).toFixed(2) %></td>
                     <td><strong><%= (p.quantity * p.price).toFixed(2) %></strong></td>
                 </tr>

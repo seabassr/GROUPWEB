@@ -5,6 +5,7 @@ const Apparel = require('../models/apparel');
 const Vehicles = require('../models/vehicles');
 const Equipment = require('../models/equipment');
 const Cart = require('../models/cart');
+const { render } = require('ejs');
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -112,6 +113,29 @@ router.post('/add-cart', (req, res) => {
 
 router.get('/view-cart', (req, res) => {
     retrieveAllFromCart(res)
+});
+
+router.post('/change-cart-quantity/:prodId', (req, res) => {
+
+    var newProductQuantity = parseInt(req.body.newQuantity);
+    const productitemId = req.body.itemId;
+
+    // Server-side verification
+    if( typeof newProductQuantity == 'number' && isNaN(newProductQuantity) == false ){
+        
+        newProductQuantity = Math.max( 1, newProductQuantity );
+        newProductQuantity = Math.min( 999, newProductQuantity );
+
+        Cart.findOneAndUpdate( {itemId: productitemId}, { $set: {quantity: newProductQuantity} } )
+            .then(results => {
+                retrieveAllFromCart(res);
+            })
+            .catch(err => console.log(err));
+    
+    }else{
+        retrieveAllFromCart(res);
+    }
+
 });
 
 function retrieveAllFromCart(res) {

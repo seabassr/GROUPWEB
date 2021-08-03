@@ -106,9 +106,20 @@ router.post('/add-cart', (req, res) => {
                     }
                     
             });
-            console.log(item);
         })
         .catch(err => console.log(err));
 });
+
+router.get('/view-cart', (req, res) => {
+    retrieveAllFromCart(res)
+});
+
+function retrieveAllFromCart(res) {
+    Cart.find()
+        .then(results => {
+            res.render('view-cart', {products: results, pageTitle: 'All items in Cart'});
+        })
+        .catch(err => console.log(err));
+}
 
 module.exports = router;

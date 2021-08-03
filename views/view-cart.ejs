@@ -1,0 +1,32 @@
+<%- include('layouts/header.ejs') %>
+<%- include('layouts/navbar.ejs') %>
+
+<div class="container">
+    <div class="col-md-9">
+        <br><h4><strong><%= pageTitle %></strong></h4><hr color="white">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Image</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Unit Price</th>
+                    <th scope="col">Total Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% let totalPrice = 0; for (let p of products) { %>
+                <tr>
+                    <td></td>
+                    <td><%= p.title %></td>
+                    <td><%= p.quantity %></td>
+                    <td><%= (p.price).toFixed(2) %></td>
+                    <td><strong><%= (p.quantity * p.price).toFixed(2) %></strong></td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<%- include('layouts/footer.ejs') %>

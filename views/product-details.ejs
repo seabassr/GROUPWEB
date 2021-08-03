@@ -15,7 +15,11 @@
                 <br>
                 $<%= prod.price %>
                 <br>
-                <button type="button" class="btn btn-outline-default btn-rounded waves-effect">Add to nonexistant cart</button>
+                <form action="/add-cart" method="POST">
+                    <input type="hidden" name="id" value="<%= prod._id %>">
+                    <input type="hidden" name="catId" value="<%= prodCategory %>">
+                    <button type="submit" name="btn btn-outline-default btn-rounded waves-effect">Add to nonexistant cart</button>
+                </form>
             </p>
         </div>
     </div>

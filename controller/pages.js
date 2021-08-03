@@ -86,10 +86,10 @@ router.post('/add-cart', (req, res) => {
     const itemId = req.body.id;
     var prod = Apparel;
 
-    if (req.body.catId = 'vehicles') {
+    if (req.body.catId == 'vehicles' || req.body.catId == 'ct2' ) {
         prod = Vehicles;
     }
-    else if (req.body.catId = 'equipment') {
+    else if (req.body.catId == 'equipment' || req.body.catId == 'ct3') {
         prod = Equipment;
     }
 

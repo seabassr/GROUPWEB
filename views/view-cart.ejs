@@ -41,7 +41,16 @@
                 </tbody>
                 <tfoot>
                     <tr>
+                        <td>Total:</td>
                         <td><p><%= totalPrice.toFixed(2) %></p></td>
+                    </tr>
+                    <tr>
+                        <td>6.25% Tax:</td>
+                        <td><p><%= (totalPrice * .0625).toFixed(2) %></p></td>
+                    </tr>
+                    <tr>
+                        <td>Total:</td>
+                        <td><p><%= (totalPrice * 1.0625).toFixed(2) %></p></td>
                     </tr>
                 </tfoot>
             </table>

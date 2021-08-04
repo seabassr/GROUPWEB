@@ -36,11 +36,88 @@
                         <td colspan="2"><strong>$<%= totalPrice.toFixed(2) %></strong></td>
                     </tr>
                     <tr>
-                        <td colspan="4" class="text-right">Shipping:</td>
-                        <td colspan="2"><strong>$<%= %></strong></td>
-                        <th><input type="radio" id="regularShip" name="shipping" value="regular">Regular</th>
-                        <th><input type="radio" id="expressShip" name="shipping" value="express">Express</th>
+                        <td>
+                            <script>
+                                function derp(browser) {
+                                  document.getElementById("answer").innerHTML=browser;
+                                }
+                                </script>
+                                </head>
+                                <body>
+                                
+                                <p>Choose a shipping option:</p>
+                                <% let shipping = 0; %>
+                                <form>
+                                <input type="radio" name="shipping" onclick="derp(this.value)" value="25">Regular<br><% shipping = 25; %>
+                                <input type="radio" name="shipping" onclick="derp(this.value)" value="35">Express<br><% shipping = 35; %>
+                                </form>
+                                <br>
+                                <p id="answer"></p>
+                        </td>
+                        <td class="text-right">Shipping Total:</td>
+                        <td><%= (totalPrice + shipping).toFixed(2) %></td>
                     </tr>
+                    <td>
+                        <!--Shipping and billing-->
+                        
+                            <div class="col-9">
+                              <h4>Billing Address</h4>
+                              <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+                              <input type="text" id="fname" name="firstname" placeholder="John M. Doe"><br><br>
+                              <label for="email"><i class="fa fa-envelope"></i> Email</label>
+                              <input type="text" id="email" name="email" placeholder="john@example.com"><br><br>
+                              <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+                              <input type="text" id="adr" name="address" placeholder="542 W. 15th Street"><br><br>
+                              <label for="city"><i class="fa fa-institution"></i> City</label>
+                              <input type="text" id="city" name="city" placeholder="New York"><br><br>
+                  
+                              <div class="row">
+                                <div class="col-9">
+                                  <label for="state">State</label>
+                                  <input type="text" id="state" name="state" placeholder="NY"><br><br>
+                                </div>
+                                <div class="col-9">
+                                  <label for="zip">Zip</label>
+                                  <input type="text" id="zip" name="zip" placeholder="10001"><br><br>
+                                </div>
+                              </div>
+                            </div>
+                  
+                            <div class="col-9">
+                              <h4>Payment</h4>
+                              <label for="fname">Accepted Cards</label>
+                              <div class="icon-container">
+                                <i class="fa fa-cc-visa" style="color:navy;"></i>
+                                <i class="fa fa-cc-amex" style="color:blue;"></i>
+                                <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                                <i class="fa fa-cc-discover" style="color:orange;"></i>
+                              </div>
+                              <label for="cname">Name on Card</label>
+                              <input type="text" id="cname" name="cardname" placeholder="John More Doe"><br><br>
+                              <label for="ccnum">Credit card number</label>
+                              <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444"><br><br>
+                              <label for="expmonth">Exp Month</label>
+                              <input type="text" id="expmonth" name="expmonth" placeholder="September"><br><br>
+                              <div class="row">
+                                <div class="col-9">
+                                  <label for="expyear">Exp Year</label>
+                                  <input type="text" id="expyear" name="expyear" placeholder="2018"><br><br>
+                                </div>
+                                <div class="col-9">
+                                  <label for="cvv">CVV</label>
+                                  <input type="text" id="cvv" name="cvv" placeholder="352"><br><br>
+                                </div>
+                              </div>
+                            </div>
+                            
+                          </div>
+                          <label>
+                            <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
+                          </label>
+                          <!--Shipping and Billing-->
+
+
+                    </td>
                     <tr>
                         <td colspan="4" class="text-right">6.25% Tax:</td>
                         <td colspan="2"><strong>$<%= (totalPrice * .0625).toFixed(2) %></strong></td>

@@ -158,6 +158,11 @@ router.get('/remove/:itemId', (req, res) => {
     });
 });
 
+router.get('/finalCheckout', (req, res) => {
+    Cart.collection.drop();
+        res.render('index');
+    });
+
 function retrieveAllFromCart(res) {
     Cart.find()
         .then(results => {

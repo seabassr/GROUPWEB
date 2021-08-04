@@ -20,8 +20,8 @@
                     <!-- Button -->
                     <form action="/add-cart" method="POST">
                         <input type="hidden" name="id" value="<%= p._id %>">
-                        <input type="hidden" name="catId" value="apparel">
-                        <button type="submit" name="btn btn-outline-default btn-rounded waves-effect">Add to nonexistant cart</button>
+                        <input type="hidden" name="catId" value="ct1">
+                        <button type="submit" id="<%= p._id %>" class="btn btn-outline-primary btn-rounded waves-effect" onclick="coolButtonThing(this.id)">Add to existant cart</button>
                     </form>
                 </div>
             </div>

@@ -85,12 +85,13 @@ router.get('/contactus', (req, res) => {
 
 router.post('/add-cart', (req, res) => {
     const itemId = req.body.id;
+    const catId = req.body.catId;
     var prod = Apparel;
 
-    if (req.body.catId == 'vehicles' || req.body.catId == 'ct2' ) {
+    if (catId == 'ct2' ) {
         prod = Vehicles;
     }
-    else if (req.body.catId == 'equipment' || req.body.catId == 'ct3') {
+    else if (catId == 'ct3') {
         prod = Equipment;
     }
 
@@ -102,7 +103,7 @@ router.post('/add-cart', (req, res) => {
                         console.log("err");
                     }
                     if(doc == null) {
-                        var item = {itemId: itemId, title: result.title, price: result.price, quantity: 1, img: result.img};
+                        var item = {itemId: itemId, catId: catId, title: result.title, price: result.price, quantity: 1, img: result.img};
                         Cart.collection.insertOne(item);
                     }
                     
@@ -141,7 +142,7 @@ router.post('/change-cart-quantity/:prodId', (req, res) => {
 function retrieveAllFromCart(res) {
     Cart.find()
         .then(results => {
-            res.render('view-cart', {products: results, pageTitle: 'All items in Cart'});
+            res.render('view-cart', {products: results, pageTitle: 'All Items in Cart'});
         })
         .catch(err => console.log(err));
 }

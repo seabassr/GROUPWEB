@@ -3,6 +3,16 @@
 <script type="text/javascript" src="/js/popper.min.js"></script>
 <script type="text/javascript" src="/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/js/mdb.min.js"></script>
+<script>
+    function coolButtonThing(ayylmao){
+        document.getElementById(ayylmao).innerHTML = "Successfully added to cart!";
+        setTimeout(
+            function(){
+                document.getElementById(ayylmao).innerHTML = "Add to existant cart";
+            }, 4000
+        )
+    }
+</script>
 <br><br>
 
 </body>

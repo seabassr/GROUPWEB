@@ -1,0 +1,31 @@
+[{
+  "_id": {
+    "$oid": "6109e3e413862134980fd5be"
+  },
+  "itemId": "6101ca1c4c61fbbc6544128e",
+  "catId": "ct1",
+  "title": "EVA Suit",
+  "price": 1655,
+  "quantity": 1,
+  "img": "SamBrown-voidstar2"
+},{
+  "_id": {
+    "$oid": "6109e3e913862134980fd5c3"
+  },
+  "itemId": "6101f7d1090e0cccc96d3dac",
+  "catId": "ct2",
+  "title": "Snowspeeder",
+  "price": 50000,
+  "quantity": 2,
+  "img": "snowspeeder"
+},{
+  "_id": {
+    "$oid": "6109e3ec13862134980fd5c8"
+  },
+  "itemId": "61020145e7506b0b6a45fb32",
+  "catId": "ct3",
+  "title": "Medical Container",
+  "price": 225,
+  "quantity": 3,
+  "img": "SyringeStandardFull"
+}]

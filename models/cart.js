@@ -4,6 +4,9 @@ const cartSchema = new mongoose.Schema({
     itemId: {
         type: String
     },
+    catId: {
+        type: String
+    },
     title: {
         type: String
     },

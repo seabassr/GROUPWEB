@@ -3,22 +3,23 @@
 
 <div class="container">
     <br><h4><strong><%= pageTitle %></strong></h4><hr color="white">
-    <div class="col-md-9">
-        <table class="table col-md-9">
+    <div class="row">
+    <div class="col-9">
+        <table class="table">
             <thead>
                 <tr>
                     <th scope="col">Image</th>
                     <th scope="col">Title</th>
                     <th scope="col">Quantity</th>
-                    <th scope="col">Unit Price</th>
-                    <th scope="col">Total Price</th>
+                    <th scope="col" class="text-right">Unit Price</th>
+                    <th scope="col" class="text-right">Total Price</th>
                 </tr>
             </thead>
             <tbody>
                 <% let totalPrice = 0; %>
                 <% for (let p of products) { %>
                 <tr>
-                    <td></td>
+                    <td><img class="cart-preview" src="/img/<%= p.catId %>/<%= p.img %>.jpg"></td>
                     <td><%= p.title %></td>
                     <td>
                         <!-- START Quantity magic stuff -->
@@ -31,12 +32,16 @@
                         </form>
                         <!-- END Quantity magic stuff -->
                     </td>
-                    <td><%= (p.price).toFixed(2) %></td>
-                    <td><strong><%= (p.quantity * p.price).toFixed(2) %></strong></td>
+                    <td class="text-right">$<%= (p.price).toFixed(2) %></td>
+                    <td class="text-right"><strong>$<%= (p.quantity * p.price).toFixed(2) %></strong></td>
                 </tr>
                 <% } %>
             </tbody>
         </table>
+    </div>
+    <div class="col-3">
+        Something about subtotal and final total goes here. I'll do it tomorrow maybe. -Emmer
+    </div>
     </div>
 </div>
 

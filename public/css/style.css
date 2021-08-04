@@ -2,10 +2,12 @@ body {
     height: 100%;
     background-color: Gainsboro;
     background-image: linear-gradient(Gainsboro, white, Gainsboro);
+    background-attachment: fixed;
 }
 h2 {
     color: black;
 }
+/*
 table {
     border:1px solid black;
     overflow:visible;
@@ -15,6 +17,7 @@ table {
     max-width:300px;
     display:block;
 }
+*/
 img.product-detail {
     border:1px solid black;
     height:400px;
@@ -30,6 +33,9 @@ img.showcase{
 }
 img.profile{
     border-radius: 100%;
+}
+img.cart-preview{
+    max-width: 50px;
 }
 .centered {
     position: absolute;

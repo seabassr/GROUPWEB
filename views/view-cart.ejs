@@ -51,7 +51,7 @@
                     <tr>
                         <td colspan="4" class="text-right">Total:</td>
                         <td><strong>$<%= (totalPrice * 1.0625).toFixed(2) %></strong></td>
-                        <td><a href="#" style="background-color: green;" type="submit" class="btn btn-rounded waves-effect">Checkout</a></td>
+                        <td><a style="background-color: green;" class="btn btn-rounded waves-effect" id="signInBtn2">Checkout</a></td>
                     </tr>
                 </tfoot>
             </table>
@@ -59,4 +59,24 @@
     </div>
 </div>
 
+<%- include('layouts/signIn.ejs') %>
+<script>
+    var modal = document.getElementById("signIn");
+    var btn = document.getElementById("signInBtn2");
+    var span = document.getElementsByClassName("close")[0];
+    
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+    
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+    
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
 <%- include('layouts/footer.ejs') %>

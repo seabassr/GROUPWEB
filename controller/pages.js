@@ -87,12 +87,15 @@ router.post('/add-cart', (req, res) => {
     const itemId = req.body.id;
     const catId = req.body.catId;
     var prod = Apparel;
+    var imgCategory = 'ct1';
 
     if (catId == 'ct2' ) {
         prod = Vehicles;
+        imgCategory = 'ct2';
     }
     else if (catId == 'ct3') {
         prod = Equipment;
+        imgCategory = 'ct3';
     }
 
     prod.findById(itemId)
@@ -103,10 +106,9 @@ router.post('/add-cart', (req, res) => {
                         console.log("err");
                     }
                     if(doc == null) {
-                        var item = {itemId: itemId, catId: catId, title: result.title, price: result.price, quantity: 1, img: result.img};
+                        var item = {itemId: itemId, title: result.title, price: result.price, quantity: 1, img: result.img, category: imgCategory};
                         Cart.collection.insertOne(item);
                     }
-                    
             });
         })
         .catch(err => console.log(err));
@@ -117,7 +119,6 @@ router.get('/view-cart', (req, res) => {
 });
 
 router.post('/change-cart-quantity/:prodId', (req, res) => {
-
     var newProductQuantity = parseInt(req.body.newQuantity);
     const productitemId = req.body.itemId;
 
@@ -133,10 +134,10 @@ router.post('/change-cart-quantity/:prodId', (req, res) => {
             })
             .catch(err => console.log(err));
     
-    }else{
+    }
+    else{
         retrieveAllFromCart(res);
     }
-
 });
 
 function retrieveAllFromCart(res) {

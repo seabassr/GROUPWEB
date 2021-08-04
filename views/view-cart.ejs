@@ -19,7 +19,7 @@
                 <% let totalPrice = 0; %>
                 <% for (let p of products) { %>
                 <tr>
-                    <td><img class="cart-preview" src="/img/<%= p.catId %>/<%= p.img %>.jpg"></td>
+                    <td><a href="img/<%= p.category %>/<%= p.img %>.jpg"><img class="card-img-top" src="/img/<%= p.category %>/<%= p.img %>.jpg"></a></td>
                     <td><%= p.title %></td>
                     <td>
                         <!-- START Quantity magic stuff -->

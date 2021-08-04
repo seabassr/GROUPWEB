@@ -1,0 +1,54 @@
+<%- include('layouts/header.ejs') %>
+<%- include('layouts/navbar.ejs') %>
+
+<div class="container">
+    <br><h4><strong><%= pageTitle %></strong></h4><hr color="white">
+    <div class="row">
+        <div class="col-9">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Image</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col" class="text-right">Unit Price</th>
+                        <th scope="col" class="text-right">Total Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% let totalPrice = 0; %>
+                    <% for (let p of products) { %>
+                    <tr>
+                        <td><a href="img/<%= p.category %>/<%= p.img %>.jpg"><img class="cart-preview" src="/img/<%= p.category %>/<%= p.img %>.jpg"></a></td>
+                        <td><%= p.title %></td>
+                        <td>
+                            <%= p.quantity %>
+                        </td>
+                        <td class="text-right">$<%= (p.price).toFixed(2) %></td>
+                        <% totalPrice += (p.quantity * p.price); %>
+                        <td class="text-right"><strong>$<%= (p.quantity * p.price).toFixed(2) %></strong></td>
+                    </tr>
+                    <% } %>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4" class="text-right">Total:</td>
+                        <td colspan="2"><strong>$<%= totalPrice.toFixed(2) %></strong></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="text-right">6.25% Tax:</td>
+                        <td colspan="2"><strong>$<%= (totalPrice * .0625).toFixed(2) %></strong></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="text-right">Total:</td>
+                        <td><strong>$<%= (totalPrice * 1.0625).toFixed(2) %></strong></td>
+                        <td><a href="#" style="background-color: green;" type="submit" class="btn btn-rounded waves-effect">Checkout</a></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<%- include('layouts/footer.ejs') %>

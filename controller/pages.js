@@ -118,6 +118,14 @@ router.get('/view-cart', (req, res) => {
     retrieveAllFromCart(res)
 });
 
+router.get('/shipping', (req, res) => {
+    Cart.find()
+        .then(results => {
+            res.render('shipping', {products: results, pageTitle: 'Shipping'});
+        })
+        .catch(err => console.log(err));
+});
+
 router.post('/change-cart-quantity/:prodId', (req, res) => {
     var newProductQuantity = parseInt(req.body.newQuantity);
     const productitemId = req.body.itemId;

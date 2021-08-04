@@ -18,7 +18,7 @@
                 <% let totalPrice = 0; %>
                 <% for (let p of products) { %>
                 <tr>
-                    <td></td>
+                    <td><a href="img/<%= p.category %>/<%= p.img %>.jpg"><img class="card-img-top" src="/img/<%= p.category %>/<%= p.img %>.jpg"></a></td>
                     <td><%= p.title %></td>
                     <td>
                         <!-- START Quantity magic stuff -->
@@ -31,8 +31,8 @@
                         </form>
                         <!-- END Quantity magic stuff -->
                     </td>
-                    <td><%= (p.price).toFixed(2) %></td>
-                    <td><strong><%= (p.quantity * p.price).toFixed(2) %></strong></td>
+                    <td>$<%= (p.price).toFixed(2) %></td>
+                    <td><strong>$<%= (p.quantity * p.price).toFixed(2) %></strong></td>
                 </tr>
                 <% } %>
             </tbody>

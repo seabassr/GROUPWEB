@@ -140,6 +140,16 @@ router.post('/change-cart-quantity/:prodId', (req, res) => {
     }
 });
 
+router.get('/remove/:itemId', (req, res) => {
+    Cart.findOneAndDelete({itemId: req.params.itemId},
+        function(err, doc) {
+            if(err) {
+                console.log(err);
+            }
+            retrieveAllFromCart(res);
+    });
+});
+
 function retrieveAllFromCart(res) {
     Cart.find()
         .then(results => {

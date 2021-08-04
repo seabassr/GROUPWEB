@@ -4,44 +4,48 @@
 <div class="container">
     <br><h4><strong><%= pageTitle %></strong></h4><hr color="white">
     <div class="row">
-    <div class="col-9">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Image</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col" class="text-right">Unit Price</th>
-                    <th scope="col" class="text-right">Total Price</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% let totalPrice = 0; %>
-                <% for (let p of products) { %>
-                <tr>
-                    <td><a href="img/<%= p.category %>/<%= p.img %>.jpg"><img class="cart-preview" src="/img/<%= p.category %>/<%= p.img %>.jpg"></a></td>
-                    <td><%= p.title %></td>
-                    <td>
-                        <!-- START Quantity magic stuff -->
-                        <form id="quantity-<%= p.itemId %>" action="/change-cart-quantity/<%= p.itemId %>" method="POST">
-                            <input type="number" class="hide-arrows" name="newQuantity"
-                                min="1" max="999" size="2" value="<%= p.quantity %>"
-                                onchange="document.getElementById('quantity-<%= p.itemId %>').submit();"
-                            >
-                            <input type="hidden" name="itemId" value="<%= p.itemId %>">
-                        </form>
-                        <!-- END Quantity magic stuff -->
-                    </td>
-                    <td class="text-right">$<%= (p.price).toFixed(2) %></td>
-                    <td class="text-right"><strong>$<%= (p.quantity * p.price).toFixed(2) %></strong></td>
-                </tr>
-                <% } %>
-            </tbody>
-        </table>
-    </div>
-    <div class="col-3">
-        Something about subtotal and final total goes here. I'll do it tomorrow maybe. -Emmer
-    </div>
+        <div class="col-9">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Image</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col" class="text-right">Unit Price</th>
+                        <th scope="col" class="text-right">Total Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% let totalPrice = 0; %>
+                    <% for (let p of products) { %>
+                    <tr>
+                        <td><a href="img/<%= p.category %>/<%= p.img %>.jpg"><img class="cart-preview" src="/img/<%= p.category %>/<%= p.img %>.jpg"></a></td>
+                        <td><%= p.title %></td>
+                        <td>
+                            <!-- START Quantity magic stuff -->
+                            <form id="quantity-<%= p.itemId %>" action="/change-cart-quantity/<%= p.itemId %>" method="POST">
+                                <input type="number" class="hide-arrows" name="newQuantity"
+                                    min="1" max="999" size="2" value="<%= p.quantity %>"
+                                    onchange="document.getElementById('quantity-<%= p.itemId %>').submit();"
+                                >
+                                <input type="hidden" name="itemId" value="<%= p.itemId %>">
+                            </form>
+                            <!-- END Quantity magic stuff -->
+                        </td>
+                        <td class="text-right">$<%= (p.price).toFixed(2) %></td>
+                        <% totalPrice += (p.quantity * p.price); %>
+                        <td class="text-right"><strong>$<%= (p.quantity * p.price).toFixed(2) %></strong></td>
+                        <td><a href="/remove/<%= p.itemId %>" type="submit" class="btn btn-outline-primary btn-rounded waves-effect" onclick="coolButtonThing(this.id)">Delete</a></td>
+                    </tr>
+                    <% } %>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td><p><%= totalPrice.toFixed(2) %></p></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
     </div>
 </div>
 

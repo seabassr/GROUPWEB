@@ -158,9 +158,9 @@ router.get('/remove/:itemId', (req, res) => {
     });
 });
 
-router.get('/finalCheckout', (req, res) => {
+router.post('/finalCheckout', (req, res) => {
     Cart.collection.drop();
-        res.render('index');
+        res.render('finalCheckout');
     });
 
 function retrieveAllFromCart(res) {

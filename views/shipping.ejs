@@ -42,6 +42,9 @@
                         <td><%= p.title %></td>
                         <!-- START Quantity magic stuff -->
                         <td>
+                            <label><%= p.quantity %></label>
+                        </td>
+                        <!-- <td>
                             <form id="quantity-<%= p.itemId %>" action="/change-cart-quantity/<%= p.itemId %>" method="POST">
                                 <input type="number" class="hide-arrows" name="newQuantity"
                                     min="1" max="999" size="2" value="<%= p.quantity %>"
@@ -49,12 +52,12 @@
                                 >
                                 <input type="hidden" name="itemId" value="<%= p.itemId %>">
                             </form>
-                        </td>
+                        </td> -->
                         <!-- END Quantity magic stuff -->
                         <td class="text-right">$<%= (p.price).toFixed(2) %></td>
                         <% totalPrice += (p.quantity * p.price); %>
                         <td class="text-right"><strong>$<%= (p.quantity * p.price).toFixed(2) %></strong></td>
-                        <td><a href="/remove/<%= p.itemId %>" type="submit" class="btn btn-outline-primary btn-rounded waves-effect">Delete</a></td>
+                        <!-- <td><a href="/remove/<%= p.itemId %>" type="submit" class="btn btn-outline-primary btn-rounded waves-effect">Delete</a></td> -->
                     </tr>
                     <% } %>
                 </tbody>

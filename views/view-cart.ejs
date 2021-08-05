@@ -1,27 +1,6 @@
 <%- include('layouts/header.ejs') %>
 <%- include('layouts/navbar.ejs') %>
 
-<script>
-
-    function hackThisPlease( shippingCost ){
-        var subtotalDisplay = document.getElementById("subtotalDisplay");
-        var shippingDisplay = document.getElementById("shippingDisplay");
-        var taxDisplay = document.getElementById("taxDisplay")
-        var totalDisplay = document.getElementById("totalDisplay")
-
-        var subtotal = parseInt( subtotalDisplay.innerHTML.substring(1) );
-        
-        var shippingResult = shippingCost;
-        var taxResult = (subtotal + shippingResult) * 0.0625;
-        var totalResult =  subtotal + shippingResult + taxResult;
-
-        shippingDisplay.innerHTML = "$" + shippingResult.toFixed(2);
-        taxDisplay.innerHTML = "$" + taxResult.toFixed(2);
-        totalDisplay.innerHTML = "$" + totalResult.toFixed(2);
-    }
-
-</script>
-
 <div class="container">
     <br><h4><strong><%= pageTitle %></strong></h4><hr color="white">
     <div class="row">
@@ -68,22 +47,10 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="3" class="text-right">Delivery Method:</td>
-                        <td class="text-right">
-                            <form>
-                                <input type="radio" name="shipping" value="Regular" checked onclick="hackThisPlease(25)">&nbsp;Regular<br>
-                                <input type="radio" name="shipping" value="Express" onclick="hackThisPlease(35)">&nbsp;Express<br>
-                            </form>
-                        </td>
-                        <td class="text-right">
-                            <strong id="shippingDisplay"><script>hackThisPlease(25)</script></strong>
-                        </td>
-                    </tr>
-                    <tr>
                         <td colspan="4" class="text-right">6.25% Tax:</td>
                         <td class="text-right">
                             <strong id="taxDisplay">
-                                <% let taxPrice = (totalPrice+25) * 0.0625 %>
+                                <% let taxPrice = (totalPrice) * 0.0625 %>
                                 $<%= taxPrice.toFixed(2) %>
                             </strong>
                         </td>
@@ -91,7 +58,7 @@
                     <tr>
                         <td colspan="4" class="text-right">Grand Total:</td>
                         <td class="text-right">
-                            <strong id="totalDisplay">$<%= ( totalPrice+25+taxPrice ).toFixed(2) %></strong>
+                            <strong id="totalDisplay">$<%= ( totalPrice+taxPrice ).toFixed(2) %></strong>
                         </td>
                         <td><a style="background-color: green;" class="btn btn-rounded waves-effect" id="signInBtn2">Checkout</a></td>
                     </tr>

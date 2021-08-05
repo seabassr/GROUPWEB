@@ -1,177 +1,203 @@
 <%- include('layouts/header.ejs') %>
 <%- include('layouts/navbar.ejs') %>
 
-<div class="container">
-    <br><h4><strong><%= pageTitle %></strong></h4><hr color="white">
-    <div class="row">
-        <div class="col-9">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Image</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col" class="text-right">Unit Price</th>
-                        <th scope="col" class="text-right">Total Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% let totalPrice = 0; %>
-                    <% for (let p of products) { %>
-                    <tr>
-                        <td><a href="img/<%= p.category %>/<%= p.img %>.jpg"><img class="cart-preview" src="/img/<%= p.category %>/<%= p.img %>.jpg"></a></td>
-                        <td><%= p.title %></td>
-                        <td>
-                            <%= p.quantity %>
-                        </td>
-                        <td class="text-right">$<%= (p.price).toFixed(2) %></td>
-                        <% totalPrice += (p.quantity * p.price); %>
-                        <td class="text-right"><strong>$<%= (p.quantity * p.price).toFixed(2) %></strong></td>
-                    </tr>
-                    <% } %>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="4" class="text-right">Total:</td>
-                        <td colspan="2"><strong>$<%= totalPrice.toFixed(2) %></strong></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <script>
-                                function derp(browser) {
-                                  document.getElementById("answer").innerHTML=browser;
-                                }
-                                </script>
-                                </head>
-                                <body>
-                                
-                                <p>Choose a shipping option:</p>
-                                <% let shipping = 0; %>
-                                <form>
-                                <input type="radio" name="shipping" onclick="derp(this.value)" value="25">Regular<br><% shipping = 25; %>
-                                <input type="radio" name="shipping" onclick="derp(this.value)" value="35">Express<br><% shipping = 35; %>
-                                </form>
-                                <br>
-                                <p id="answer"></p>
-                        </td>
-                        <td class="text-right">Shipping Total:</td>
-                        <td><%= (totalPrice + shipping).toFixed(2) %></td>
-                    </tr>
-                    <tr>
-                      <td colspan="3">
-                        <h4>Billing Address</h4>
-                        <label for="fname"><i class="fa fa-user"></i> Full Name</label><br>
-                        <input type="text" id="fname" name="firstname" placeholder="John M. Doe"><br><br>
-                        <label for="email"><i class="fa fa-envelope"></i> Email</label><br>
-                        <input type="text" id="email" name="email" placeholder="john@example.com"><br><br>
-                        <label for="adr"><i class="fa fa-address-card-o"></i> Address</label><br>
-                        <input type="text" id="adr" name="address" placeholder="542 W. 15th Street"><br><br>
-                        <label for="city"><i class="fa fa-institution"></i> City</label><br>
-                        <input type="text" id="city" name="city" placeholder="New York"><br><br>
-                        <label for="state">State</label><br>
+<script>
+  function hackThisPlease( shippingCost ){
+      var subtotalDisplay = document.getElementById("subtotalDisplay");
+      var shippingDisplay = document.getElementById("shippingDisplay");
+      var taxDisplay = document.getElementById("taxDisplay")
+      var totalDisplay = document.getElementById("totalDisplay")
 
-                        <select>
-                            <option value="AL">Alabama</option>
-                            <option value="AK">Alaska</option>
-                            <option value="AZ">Arizona</option>
-                            <option value="AR">Arkansas</option>
-                            <option value="CA">California</option>
-                            <option value="CO">Colorado</option>
-                            <option value="CT">Connecticut</option>
-                            <option value="DE">Delaware</option>
-                            <option value="DC">District Of Columbia</option>
-                            <option value="FL">Florida</option>
-                            <option value="GA">Georgia</option>
-                            <option value="HI">Hawaii</option>
-                            <option value="ID">Idaho</option>
-                            <option value="IL">Illinois</option>
-                            <option value="IN">Indiana</option>
-                            <option value="IA">Iowa</option>
-                            <option value="KS">Kansas</option>
-                            <option value="KY">Kentucky</option>
-                            <option value="LA">Louisiana</option>
-                            <option value="ME">Maine</option>
-                            <option value="MD">Maryland</option>
-                            <option value="MA">Massachusetts</option>
-                            <option value="MI">Michigan</option>
-                            <option value="MN">Minnesota</option>
-                            <option value="MS">Mississippi</option>
-                            <option value="MO">Missouri</option>
-                            <option value="MT">Montana</option>
-                            <option value="NE">Nebraska</option>
-                            <option value="NV">Nevada</option>
-                            <option value="NH">New Hampshire</option>
-                            <option value="NJ">New Jersey</option>
-                            <option value="NM">New Mexico</option>
-                            <option value="NY">New York</option>
-                            <option value="NC">North Carolina</option>
-                            <option value="ND">North Dakota</option>
-                            <option value="OH">Ohio</option>
-                            <option value="OK">Oklahoma</option>
-                            <option value="OR">Oregon</option>
-                            <option value="PA">Pennsylvania</option>
-                            <option value="RI">Rhode Island</option>
-                            <option value="SC">South Carolina</option>
-                            <option value="SD">South Dakota</option>
-                            <option value="TN">Tennessee</option>
-                            <option value="TX">Texas</option>
-                            <option value="UT">Utah</option>
-                            <option value="VT">Vermont</option>
-                            <option value="VA">Virginia</option>
-                            <option value="WA">Washington</option>
-                            <option value="WV">West Virginia</option>
-                            <option value="WI">Wisconsin</option>
-                            <option value="WY">Wyoming</option>
-                        </select><br><br>
-                        <label for="zip">Zip</label><br>
-                        <input type="text" id="zip" name="zip" placeholder="10001"><br><br>
+      var subtotal = parseInt( subtotalDisplay.innerHTML.substring(1) );
+      
+      var shippingResult = shippingCost;
+      var taxResult = (subtotal + shippingResult) * 0.0625;
+      var totalResult =  subtotal + shippingResult + taxResult;
+
+      shippingDisplay.innerHTML = "$" + shippingResult.toFixed(2);
+      taxDisplay.innerHTML = "$" + taxResult.toFixed(2);
+      totalDisplay.innerHTML = "$" + totalResult.toFixed(2);
+  }
+</script>
+
+<div class="container">
+  <br><h4><strong><%= pageTitle %></strong></h4><hr color="white">
+  <div class="row">
+      <div class="col-9">
+          <table class="table">
+              <thead>
+                  <tr>
+                      <th scope="col">Image</th>
+                      <th scope="col">Title</th>
+                      <th scope="col">Quantity</th>
+                      <th scope="col" class="text-right">Unit Price</th>
+                      <th scope="col" class="text-right">Total Price</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <% let totalPrice = 0; %>
+                  <% for (let p of products) { %>
+                  <tr>
+                      <td><a href="img/<%= p.category %>/<%= p.img %>.jpg"><img class="cart-preview" src="/img/<%= p.category %>/<%= p.img %>.jpg"></a></td>
+                      <td><%= p.title %></td>
+                      <!-- START Quantity magic stuff -->
+                      <td>
+                          <form id="quantity-<%= p.itemId %>" action="/change-cart-quantity/<%= p.itemId %>" method="POST">
+                              <input type="number" class="hide-arrows" name="newQuantity"
+                                  min="1" max="999" size="2" value="<%= p.quantity %>"
+                                  onchange="document.getElementById('quantity-<%= p.itemId %>').submit();"
+                              >
+                              <input type="hidden" name="itemId" value="<%= p.itemId %>">
+                          </form>
                       </td>
-                      <td colspan="3">
-                        <h4>Payment</h4>
-                          <label for="fname">Accepted Cards</label>
-                          <div class="icon-container">
-                            <i class="fa fa-cc-visa" style="color:navy;"></i>
-                            <i class="fa fa-cc-amex" style="color:blue;"></i>
-                            <i class="fa fa-cc-mastercard" style="color:red;"></i>
-                            <i class="fa fa-cc-discover" style="color:orange;"></i>
+                      <!-- END Quantity magic stuff -->
+                      <td class="text-right">$<%= (p.price).toFixed(2) %></td>
+                      <% totalPrice += (p.quantity * p.price); %>
+                      <td class="text-right"><strong>$<%= (p.quantity * p.price).toFixed(2) %></strong></td>
+                      <td><a href="/remove/<%= p.itemId %>" type="submit" class="btn btn-outline-primary btn-rounded waves-effect">Delete</a></td>
+                  </tr>
+                  <% } %>
+              </tbody>
+              <tfoot>
+                  <tr>
+                      <td colspan="4" class="text-right">Subtotal:</td>
+                      <td class="text-right">
+                          <strong id="subtotalDisplay">$<%= totalPrice.toFixed(2) %></strong>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td colspan="3" class="text-right">Delivery Method:</td>
+                      <td class="text-right">
+                          <form>
+                              <input type="radio" name="shipping" value="Regular" checked onclick="hackThisPlease(25)">&nbsp;Regular<br>
+                              <input type="radio" name="shipping" value="Express" onclick="hackThisPlease(35)">&nbsp;Express<br>
+                          </form>
+                      </td>
+                      <td class="text-right">
+                          <strong id="shippingDisplay"><script>hackThisPlease(25)</script></strong>
+                      </td>
+                  </tr>
+                  <tr>
+                    <td colspan="3">
+                      <h4>Billing Address</h4>
+                      <label for="fname"><i class="fa fa-user"></i> Full Name</label><br>
+                      <input type="text" id="fname" name="firstname" placeholder="John M. Doe" required><br><br>
+                      <label for="email"><i class="fa fa-envelope"></i> Email</label><br>
+                      <input type="text" id="email" name="email" placeholder="john@example.com" required><br><br>
+                      <label for="adr"><i class="fa fa-address-card-o"></i> Address</label><br>
+                      <input type="text" id="adr" name="address" placeholder="542 W. 15th Street" required><br><br>
+                      <label for="city"><i class="fa fa-institution"></i> City</label><br>
+                      <input type="text" id="city" name="city" placeholder="New York" required><br><br>
+                      <label for="state">State</label><br>
+
+                      <select>
+                          <option value="AL">Alabama</option>
+                          <option value="AK">Alaska</option>
+                          <option value="AZ">Arizona</option>
+                          <option value="AR">Arkansas</option>
+                          <option value="CA">California</option>
+                          <option value="CO">Colorado</option>
+                          <option value="CT">Connecticut</option>
+                          <option value="DE">Delaware</option>
+                          <option value="DC">District Of Columbia</option>
+                          <option value="FL">Florida</option>
+                          <option value="GA">Georgia</option>
+                          <option value="HI">Hawaii</option>
+                          <option value="ID">Idaho</option>
+                          <option value="IL">Illinois</option>
+                          <option value="IN">Indiana</option>
+                          <option value="IA">Iowa</option>
+                          <option value="KS">Kansas</option>
+                          <option value="KY">Kentucky</option>
+                          <option value="LA">Louisiana</option>
+                          <option value="ME">Maine</option>
+                          <option value="MD">Maryland</option>
+                          <option value="MA">Massachusetts</option>
+                          <option value="MI">Michigan</option>
+                          <option value="MN">Minnesota</option>
+                          <option value="MS">Mississippi</option>
+                          <option value="MO">Missouri</option>
+                          <option value="MT">Montana</option>
+                          <option value="NE">Nebraska</option>
+                          <option value="NV">Nevada</option>
+                          <option value="NH">New Hampshire</option>
+                          <option value="NJ">New Jersey</option>
+                          <option value="NM">New Mexico</option>
+                          <option value="NY">New York</option>
+                          <option value="NC">North Carolina</option>
+                          <option value="ND">North Dakota</option>
+                          <option value="OH">Ohio</option>
+                          <option value="OK">Oklahoma</option>
+                          <option value="OR">Oregon</option>
+                          <option value="PA">Pennsylvania</option>
+                          <option value="RI">Rhode Island</option>
+                          <option value="SC">South Carolina</option>
+                          <option value="SD">South Dakota</option>
+                          <option value="TN">Tennessee</option>
+                          <option value="TX">Texas</option>
+                          <option value="UT">Utah</option>
+                          <option value="VT">Vermont</option>
+                          <option value="VA">Virginia</option>
+                          <option value="WA">Washington</option>
+                          <option value="WV">West Virginia</option>
+                          <option value="WI">Wisconsin</option>
+                          <option value="WY">Wyoming</option>
+                      </select><br><br>
+                      <label for="zip">Zip</label><br>
+                      <input type="text" id="zip" name="zip" placeholder="10001" required><br><br>
+                    </td>
+                    <td colspan="3">
+                      <h4>Payment</h4>
+                        <label for="fname">Accepted Cards</label>
+                        <div class="icon-container">
+                          <i class="fa fa-cc-visa" style="color:navy;"></i>
+                          <i class="fa fa-cc-amex" style="color:blue;"></i>
+                          <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                          <i class="fa fa-cc-discover" style="color:orange;"></i>
+                        </div>
+                        <label for="cname">Name on Card</label><br>
+                        <input type="text" id="cname" name="cardname" placeholder="John More Doe" required><br><br>
+                        <label for="ccnum">Credit card number</label><br>
+                        <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" required><br><br>
+                        <label for="expmonth">Exp Month</label><br>
+                        <input type="text" id="expmonth" name="expmonth" placeholder="September" required><br><br>
+                        <div class="row">
+                          <div class="col-9">
+                            <label for="expyear">Exp Year</label><br>
+                            <input type="text" id="expyear" name="expyear" placeholder="2018" required><br><br>
                           </div>
-                          <label for="cname">Name on Card</label><br>
-                          <input type="text" id="cname" name="cardname" placeholder="John More Doe"><br><br>
-                          <label for="ccnum">Credit card number</label><br>
-                          <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444"><br><br>
-                          <label for="expmonth">Exp Month</label><br>
-                          <input type="text" id="expmonth" name="expmonth" placeholder="September"><br><br>
-                          <div class="row">
-                            <div class="col-9">
-                              <label for="expyear">Exp Year</label><br>
-                              <input type="text" id="expyear" name="expyear" placeholder="2018"><br><br>
-                            </div>
-                            <div class="col-9">
-                              <label for="cvv">CVV</label><br>
-                              <input type="text" id="cvv" name="cvv" placeholder="352"><br><br>
-                            </div>
+                          <div class="col-9">
+                            <label for="cvv">CVV</label><br>
+                            <input type="text" id="cvv" name="cvv" placeholder="352" required><br><br>
                           </div>
                         </div>
-                      <label>
-                        <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
-                      </label>
-                      <!--Shipping and Billing-->
+                      </div>
+                    <label>
+                      <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
+                    </label>
+                    <!--Shipping and Billing-->
+                    </td>
+                  </tr>
+                  <tr>
+                      <td colspan="4" class="text-right">6.25% Tax:</td>
+                      <td class="text-right">
+                          <strong id="taxDisplay">
+                              <% let taxPrice = (totalPrice+25) * 0.0625 %>
+                              $<%= taxPrice.toFixed(2) %>
+                          </strong>
                       </td>
-                    </tr>
-                    <tr>
-                        <td colspan="4" class="text-right">6.25% Tax:</td>
-                        <td colspan="2"><strong>$<%= (totalPrice * .0625).toFixed(2) %></strong></td>
-                    </tr>
-                    <tr>
-                        <td colspan="4" class="text-right">Total:</td>
-                        <td><strong>$<%= (totalPrice * 1.0625).toFixed(2) %></strong></td>
-                        <td><a href="finalCheckout" style="background-color: green;" type="submit" class="btn btn-rounded waves-effect">Checkout</a></td>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
-    </div>
+                  </tr>
+                  <tr>
+                      <td colspan="4" class="text-right">Grand Total:</td>
+                      <td class="text-right">
+                          <strong id="totalDisplay">$<%= ( totalPrice+25+taxPrice ).toFixed(2) %></strong>
+                      </td>
+                      <td><a style="background-color: green;" class="btn btn-rounded waves-effect" id="signInBtn2" href="finalCheckout">Place Order</a></td>
+                  </tr>
+              </tfoot>
+          </table>
+      </div>
+  </div>
 </div>
-
 
 <%- include('layouts/footer.ejs') %>

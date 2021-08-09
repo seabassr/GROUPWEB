@@ -26,24 +26,6 @@
 </nav>
 
 <%- include('signIn.ejs') %>
-<script>
-    var modal = document.getElementById("signIn");
-    var btn = document.getElementById("signInBtn");
-    var span = document.getElementsByClassName("close")[0];
-    
-    btn.onclick = function() {
-        modal.style.display = "block";
-    }
-    
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
-    
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-</script>
+<%- include('signUp.ejs') %>
 <br><br><br>
 <!-- End of navbar -->

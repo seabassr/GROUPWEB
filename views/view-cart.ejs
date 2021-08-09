@@ -1,9 +1,13 @@
 <%- include('layouts/header.ejs') %>
 <%- include('layouts/navbar.ejs') %>
+<%- include('layouts/checkout-signIn.ejs') %>
 
 <div class="container">
     <br><h4><strong><%= pageTitle %></strong></h4><hr color="white">
     <div class="row">
+        <% if (products == 0) { %>
+        <h1>Your cart is empty</h1>
+        <% } else { %>
         <div class="col-9">
             <table class="table">
                 <thead>
@@ -65,26 +69,26 @@
                 </tfoot>
             </table>
         </div>
+        <% } %>
     </div>
 </div>
 
-<%- include('layouts/signIn.ejs') %>
 <script>
-    var modal = document.getElementById("signIn");
-    var btn = document.getElementById("signInBtn2");
-    var span = document.getElementsByClassName("close")[0];
-    
-    btn.onclick = function() {
-        modal.style.display = "block";
+    var modal3 = document.getElementById("checkout-signIn");
+    var btn3 = document.getElementById("signInBtn2");
+    var span3 = document.getElementsByClassName("close3")[0];
+
+    btn3.onclick = function() {
+        modal3.style.display = "block";
     }
-    
-    span.onclick = function() {
-        modal.style.display = "none";
+
+    span3.onclick = function() {
+        modal3.style.display = "none";
     }
-    
+
     window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
+        if (event.target == modal3) {
+            modal3.style.display = "none";
         }
     }
 </script>

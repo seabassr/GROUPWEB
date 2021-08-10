@@ -2,18 +2,19 @@
 <div id="signUp" class="float">
     <div class="float-content">
         <div class="float-body">
-            <form class="text-center border border-light p-5" action="#!">
+            <form class="text-center border border-light p-5" action="/submitUser" method="POST">
                 <span class="close2">&times;</span>
                 <p class="h4">Sign Up</p>
-                <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
-                <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
-                <input type="fname" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="First Name">
-                <input type="lname" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Last Name">
-                <input type="address" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Address">
-                <input type="city" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="City">
-                <label type="state" id="defaultLoginFormPassword" class="form-control mb-1">State</label>
+                <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail" name='email' required>
+                <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password" name='password' required>
+                <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="First Name" name='fname' required>
+                <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="Last Name" name='lname' required>
+                <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="Address" name='address' required>
+                <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="City" name='city' required>
+                <label class="active">State</label>
 
-                <select required form="guest-form">
+                <select class="browser-default custom-select mb-4" name="state" required>
+                    <option value disabled>Select Your State</option>
                     <option value="AL">Alabama</option>
                     <option value="AK">Alaska</option>
                     <option value="AZ">Arizona</option>
@@ -67,7 +68,7 @@
                     <option value="WY">Wyoming</option>
                 </select><br><br>
 
-                <input type="zip" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Zip">
+                <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="Zip">
                 <button class="btn btn-info btn-block my-4" type="submit">Register</button>
 
                 <p>Already a member?

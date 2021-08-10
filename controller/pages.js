@@ -5,6 +5,7 @@ const Apparel = require('../models/apparel');
 const Vehicles = require('../models/vehicles');
 const Equipment = require('../models/equipment');
 const Cart = require('../models/cart');
+const User = require('../models/user');
 const { render } = require('ejs');
 const router = express.Router();
 
@@ -162,6 +163,27 @@ router.post('/finalCheckout', (req, res) => {
     Cart.collection.drop();
         res.render('finalCheckout');
     });
+
+router.post('/submitUser', (req, res) => {
+    const user = new User ({
+        email: req.body.email,
+        password: req.body.password,
+        fname: req.body.fname,
+        lname: req.body.lname,
+        addressInfo: {
+            address: req.body.address,
+            city: req.body.city,
+            state: req.body.state,
+            zip: req.body.zip
+        }
+    });
+
+    User.collection.insertOne(user)
+        .then(result => {
+            res.render('index');
+        })
+        .catch(err => console.log(err));
+});
 
 function retrieveAllFromCart(res) {
     Cart.find()

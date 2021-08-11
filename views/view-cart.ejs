@@ -77,18 +77,33 @@
     var modal3 = document.getElementById("checkout-signIn");
     var btn3 = document.getElementById("signInBtn2");
     var span3 = document.getElementsByClassName("close3")[0];
+    var modal4 = document.getElementById("signUp");
+    var btn4 = document.getElementById("signUpBtn2");
+    var span4 = document.getElementsByClassName("close4")[0];
 
     btn3.onclick = function() {
         modal3.style.display = "block";
+    }
+
+    btn4.onclick = function() {
+        modal3.style.display = "none";
+        modal4.style.display = "block";
     }
 
     span3.onclick = function() {
         modal3.style.display = "none";
     }
 
+    span4.onclick = function() {
+        modal4.style.display = "none";
+    }
+
     window.onclick = function(event) {
         if (event.target == modal3) {
             modal3.style.display = "none";
+        }
+        else if (event.target == modal4) {
+            modal4.style.display = "none";
         }
     }
 </script>

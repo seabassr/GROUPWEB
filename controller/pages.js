@@ -8,9 +8,10 @@ const Cart = require('../models/cart');
 const User = require('../models/user');
 const { render } = require('ejs');
 const router = express.Router();
+var action = 'pass'
 
 router.get('/', (req, res) => {
-    res.render('index');
+    res.render('index', {act: action});
 });
 
 router.get('/apparel', (req, res) =>{
@@ -181,10 +182,12 @@ router.post('/submitUser', (req, res) => {
             });
 
             User.collection.insertOne(user);
-            res.render('index');
+            res.render('index', {act: action});
         }
         else {
-            res.render('index');
+            action = 'fail';
+            res.render('index', {act: action});
+            action = 'pass';
         }
     })
 });

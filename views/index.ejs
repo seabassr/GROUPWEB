@@ -1,6 +1,10 @@
 <%- include('layouts/header.ejs') %>
 <%- include('layouts/navbar.ejs') %>
 
+<% if (act == 'fail') { %>
+<body onload="userExist()"></body>
+<% } %>
+
 <div class="container">
     <div class="opacityOut centered">
         <h1 style="font-size: 5vw; height: 100%; text-align: center;font-family: Copperplate, Papyrus, fantasy;">

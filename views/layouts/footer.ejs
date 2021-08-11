@@ -21,6 +21,11 @@
     var span = document.getElementsByClassName("close")[0];
     var span2 = document.getElementsByClassName("close2")[0];
     
+    function userExist() {
+        alert("Email already taken!");
+        modal2.style.display = "block";
+    }
+    
     btn.onclick = function() {
         modal.style.display = "block";
     }

@@ -165,24 +165,28 @@ router.post('/finalCheckout', (req, res) => {
     });
 
 router.post('/submitUser', (req, res) => {
-    const user = new User ({
-        email: req.body.email,
-        password: req.body.password,
-        fname: req.body.fname,
-        lname: req.body.lname,
-        addressInfo: {
-            address: req.body.address,
-            city: req.body.city,
-            state: req.body.state,
-            zip: req.body.zip
-        }
-    });
+    User.findOne({email: req.body.email}, function(err, doc) {
+        if(doc == null) {
+            const user = new User ({
+                email: req.body.email,
+                password: req.body.password,
+                fname: req.body.fname,
+                lname: req.body.lname,
+                addressInfo: {
+                    address: req.body.address,
+                    city: req.body.city,
+                    state: req.body.state,
+                    zip: req.body.zip
+                }
+            });
 
-    User.collection.insertOne(user)
-        .then(result => {
+            User.collection.insertOne(user);
             res.render('index');
-        })
-        .catch(err => console.log(err));
+        }
+        else {
+            res.render('index');
+        }
+    })
 });
 
 function retrieveAllFromCart(res) {

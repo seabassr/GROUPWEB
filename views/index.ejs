@@ -1,9 +1,16 @@
 <%- include('layouts/header.ejs') %>
 <%- include('layouts/navbar.ejs') %>
 
-<% if (act == 'fail') { %>
-<body onload="userExist()"></body>
+<% if (status == 'fail') { %>
+    <body onload="userExist()"></body>
 <% } %>
+<% if (register == 'fail') { %>
+    <body onload="newEmail()"></body>
+<% } %>
+<% if (checkPassword == 'fail') { %>
+    <body onload="inncorrectPassword()"></body>
+<% } %>
+
 
 <div class="container">
     <div class="opacityOut centered">

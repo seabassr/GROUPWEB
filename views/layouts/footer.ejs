@@ -22,8 +22,18 @@
     var span2 = document.getElementsByClassName("close2")[0];
     
     function userExist() {
-        alert("Email already taken!");
+        alert("Email already taken");
         modal2.style.display = "block";
+    }
+
+    function newEmail() {
+        alert("Look like a new user, register for free!");
+        modal2.style.display = "block";
+    }
+
+    function inncorrectPassword() {
+        alert("Password is inncorrect");
+        modal.style.display = "block";
     }
     
     btn.onclick = function() {

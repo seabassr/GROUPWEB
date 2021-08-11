@@ -2,12 +2,12 @@
 <div id="signIn" class="float">
     <div class="float-content">
         <div class="float-body">
-            <form class="text-center border border-light p-5" action="#!">
+            <form class="text-center border border-light p-5" action="/loginUser" method="POST">
                 <span class="close">&times;</span>
                 <p class="h4">Sign in</p>
-                <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
-                <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
-                <button class="btn btn-info btn-block my-4" type="submit">Sign in</button>
+                <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail" name='email' required>
+                <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password" name='password' required>
+                <button class="btn btn-info btn-block my-4" type="submit">Sign In</button>
                 
                 <p>Not a member?
                     <a id="signUpBtn"><u>Register</u></a>

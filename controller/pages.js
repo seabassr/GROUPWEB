@@ -8,10 +8,12 @@ const Cart = require('../models/cart');
 const User = require('../models/user');
 const { render } = require('ejs');
 const router = express.Router();
-var action = 'pass'
+var userExisted = 'pass';
+var newUser = 'pass';
+var wrongPassword = 'pass';
 
 router.get('/', (req, res) => {
-    res.render('index', {act: action});
+    res.render('index', {status: userExisted, register: newUser, checkPassword: wrongPassword});
 });
 
 router.get('/apparel', (req, res) =>{
@@ -182,12 +184,34 @@ router.post('/submitUser', (req, res) => {
             });
 
             User.collection.insertOne(user);
-            res.render('index', {act: action});
+            res.render('index', {status: userExisted, register: newUser, checkPassword: wrongPassword});
         }
         else {
-            action = 'fail';
-            res.render('index', {act: action});
-            action = 'pass';
+            userExisted = 'fail';
+            res.render('index', {status: userExisted, register: newUser, checkPassword: wrongPassword});
+            userExisted = 'pass';
+        }
+    })
+});
+
+router.post('/loginUser', (req, res) => {
+    User.findOne({email: req.body.email}, function(err, doc) {
+        if(doc == null) {
+            newUser = 'fail';
+            res.render('index', {status: userExisted, register: newUser, checkPassword: wrongPassword});
+            newUser = 'pass';
+        }
+        else {
+            User.findOne({email: req.body.email, password: req.body.password}, function(err, doc) {
+                if(doc == null) {
+                    wrongPassword = 'fail';
+                    res.render('index', {status: userExisted, register: newUser, checkPassword: wrongPassword});
+                    wrongPassword = 'pass';
+                }
+                else {
+                    res.render('index', {status: userExisted, register: newUser, checkPassword: wrongPassword});
+                }
+            })
         }
     })
 });

@@ -14,7 +14,7 @@ var wrongPassword = 'pass';
 var userInfo = null;
 
 router.get('/', (req, res) => {
-    res.render('index', {status: userExisted, register: newUser, checkPassword: wrongPassword});
+    res.render('index', {userInfo: userInfo, status: userExisted, register: newUser, checkPassword: wrongPassword});
 });
 
 router.get('/apparel', (req, res) =>{
@@ -22,6 +22,7 @@ router.get('/apparel', (req, res) =>{
         .then(results =>{
             res.render('apparel',
                 {
+                    userInfo: userInfo, 
                     products: results,
                     imgcategory: "ct1",
                     pageTitle: "Apparel"
@@ -33,7 +34,7 @@ router.get('/apparel', (req, res) =>{
 router.get('/apparel/:prodId', (req, res) => {
     Apparel.findById(req.params.prodId)
         .then( result => {
-            res.render('product-details', {prod: result, prodCategory: "ct1"});
+            res.render('product-details', {userInfo: userInfo, prod: result, prodCategory: "ct1"});
         })
         .catch(err => console.log(err));
 })
@@ -43,6 +44,7 @@ router.get('/vehicles', (req, res) => {
         .then(results =>{
             res.render('vehicles',
                 {
+                    userInfo: userInfo, 
                     products: results,
                     imgcategory: "ct2",
                     pageTitle: "Vehicles"
@@ -54,7 +56,7 @@ router.get('/vehicles', (req, res) => {
 router.get('/vehicles/:prodId', (req, res) => {
     Vehicles.findById(req.params.prodId)
         .then( result => {
-            res.render('product-details', {prod: result, prodCategory: "ct2"});
+            res.render('product-details', {userInfo: userInfo, prod: result, prodCategory: "ct2"});
         })
         .catch(err => console.log(err));
 })
@@ -64,6 +66,7 @@ router.get('/equipment', (req, res) => {
         .then(results =>{
             res.render('equipment',
                 {
+                    userInfo: userInfo, 
                     products: results,
                     imgcategory: "ct3",
                     pageTitle: "Equipment"
@@ -75,7 +78,7 @@ router.get('/equipment', (req, res) => {
 router.get('/equipment/:prodId', (req, res) => {
     Equipment.findById(req.params.prodId)
         .then( result => {
-            res.render('product-details', {prod: result, prodCategory: "ct3"});
+            res.render('product-details', {userInfo: userInfo, prod: result, prodCategory: "ct3"});
         })
         .catch(err => console.log(err));
 })
@@ -83,6 +86,7 @@ router.get('/equipment/:prodId', (req, res) => {
 router.get('/contactus', (req, res) => {
     res.render('contactus',
         {
+            userInfo: userInfo, 
             pageTitle: "Contact Us"
         }
     );
@@ -126,7 +130,7 @@ router.get('/view-cart', (req, res) => {
 router.get('/shipping', (req, res) => {
     Cart.find()
         .then(results => {
-            res.render('shipping', {products: results, pageTitle: 'Shipping', shippingInfo: userInfo});
+            res.render('shipping', {userInfo: userInfo, products: results, pageTitle: 'Shipping'});
         })
         .catch(err => console.log(err));
 });
@@ -165,8 +169,17 @@ router.get('/remove/:itemId', (req, res) => {
 
 router.post('/finalCheckout', (req, res) => {
     Cart.collection.drop();
-        res.render('finalCheckout');
+        res.render('finalCheckout', {userInfo: userInfo});
 });
+
+router.get('/signout', (req, res) => {
+    userInfo = null;
+    res.render('signout', {userInfo: userInfo});
+});
+
+router.get('/editProfile', (req, res) => {
+    res.render('editProfile', {userInfo: userInfo});
+})
 
 router.post('/submitUser', (req, res) => {
     User.findOne({email: req.body.email}, function(err, doc) {
@@ -185,11 +198,12 @@ router.post('/submitUser', (req, res) => {
             });
 
             User.collection.insertOne(user);
-            res.render('index', {status: userExisted, register: newUser, checkPassword: wrongPassword});
+            userInfo = user;
+            res.render('index', {userInfo: userInfo, status: userExisted, register: newUser, checkPassword: wrongPassword});
         }
         else {
             userExisted = 'fail';
-            res.render('index', {status: userExisted, register: newUser, checkPassword: wrongPassword});
+            res.render('index', {userInfo: userInfo, status: userExisted, register: newUser, checkPassword: wrongPassword});
             userExisted = 'pass';
         }
     })
@@ -199,19 +213,19 @@ router.post('/loginUser', (req, res) => {
     User.findOne({email: req.body.email}, function(err, doc) {
         if(doc == null) {
             newUser = 'fail';
-            res.render('index', {status: userExisted, register: newUser, checkPassword: wrongPassword});
+            res.render('index', {userInfo: userInfo, status: userExisted, register: newUser, checkPassword: wrongPassword});
             newUser = 'pass';
         }
         else {
             User.findOne({email: req.body.email, password: req.body.password}, function(err, doc) {
                 if(doc == null) {
                     wrongPassword = 'fail';
-                    res.render('index', {status: userExisted, register: newUser, checkPassword: wrongPassword});
+                    res.render('index', {userInfo: userInfo, status: userExisted, register: newUser, checkPassword: wrongPassword});
                     wrongPassword = 'pass';
                 }
                 else {
                     userInfo = doc;
-                    res.render('index', {status: userExisted, register: newUser, checkPassword: wrongPassword});
+                    res.render('index', {userInfo: userInfo, status: userExisted, register: newUser, checkPassword: wrongPassword});
                 }
             })
         }
@@ -221,7 +235,7 @@ router.post('/loginUser', (req, res) => {
 function retrieveAllFromCart(res) {
     Cart.find()
         .then(results => {
-            res.render('view-cart', {products: results, pageTitle: 'All Items in Cart'});
+            res.render('view-cart', {userInfo: userInfo, products: results, pageTitle: 'All Items in Cart'});
         })
         .catch(err => console.log(err));
 }

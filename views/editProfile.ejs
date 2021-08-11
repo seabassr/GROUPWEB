@@ -1,12 +1,16 @@
 <%- include('layouts/header.ejs') %>
 <%- include('layouts/navbar.ejs') %>
-        <div class="container">
-            <br><h4><strong>Edit Profile Information</strong></h4><hr color="white">
+<div class="container">
+    <br><h4><strong>Edit Profile</strong></h4><hr color="white">
+    <form id="guest-form" method="POST" action="/editSuccess"></form>
+    <div class="row">
+        <div class="col-6">
+            <h4>Personal Information</h4>
             <label for="fname"><i class="fa fa-user"></i> First Name</label><br>
-            <input type="text" id="fname" name="firstname" placeholder="John" required form="guest-form"
+            <input type="text" id="fname" name="fname" placeholder="John" required form="guest-form"
                 value="<%= userInfo.fname %>"><br><br>
             <label for="fname"><i class="fa fa-user"></i> Last Name</label><br>
-            <input type="text" id="lname" name="lastname" placeholder="Doe" required form="guest-form"
+            <input type="text" id="lname" name="lname" placeholder="Doe" required form="guest-form"
                 value="<%= userInfo.lname %>"><br><br>
             <label for="email"><i class="fa fa-envelope"></i> Email</label><br>
             <input type="text" id="email" name="email" placeholder="john@example.com" required form="guest-form"
@@ -21,8 +25,8 @@
             <input type="text" id="city" name="city" placeholder="New York" required form="guest-form"
                 value="<%= userInfo.addressInfo.city %>"><br><br>
             <label for="state">State</label><br>
-            <select required form="guest-form">
-                <option value="<%= userInfo.state %>">
+            <select required form="guest-form" id="state" name="state">
+                <option value="<%= userInfo.addressInfo.state %>">
                     <%= userInfo.addressInfo.state %>
                 </option>
                 <option value="Alabama">Alabama</option>
@@ -81,5 +85,78 @@
             <input type="text" id="zip" name="zip" placeholder="10001" required form="guest-form"
                 value="<%= userInfo.addressInfo.zip %>"><br><br>
         </div>
+        <!-- Quick Payment -->
+        <div class="col-6">
+            <h4>Quick Payment</h4>
+            <label for="creditCard">Card Type:</label><br>
 
-        <%- include('layouts/footer.ejs') %>
+            <select id="cardprovider" name="cardprovider" form="guest-form">
+                <option disabled>Select a card provider</option>
+                <option value="<%= userInfo.cardInfo.provider %>"> <%= userInfo.cardInfo.provider %> </option>
+                <option value="Visa">Visa</option>
+                <option value="American Express">American Express</option>
+                <option value="Mastercard">Mastercard</option>
+                <option value="Discover">Discover</option>
+            </select><br><br>
+            <label for="cname">Name on card</label><br>
+            <input type="text" id="cname" name="cardname" placeholder="John More Doe" form="guest-form" value="<%= userInfo.cardInfo.holder %>"><br><br>
+            <label for="ccnum">Credit card number</label><br>
+            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" form="guest-form" value="<%= userInfo.cardInfo.number %>"><br><br>
+            <label for="expmonth">Exp Month</label><br>
+            <select id="expmonth" name="cardmonth" form="guest-form">
+                <option value="<%= userInfo.cardInfo.month %>"><%= userInfo.cardInfo.month %></option>
+                <option value="January">January</option>
+                <option value="February">February</option>
+                <option value="March">March</option>
+                <option value="April">April</option>
+                <option value="May">May</option>
+                <option value="June">June</option>
+                <option value="July">July</option>
+                <option value="August">August</option>
+                <option value="September">September</option>
+                <option value="October">October</option>
+                <option value="November">November</option>
+                <option value="December">December</option>
+            </select><br><br>
+            <!-- <input type="text" id="expmonth" name="expmonth" placeholder="September" required form="guest-form"><br><br> -->
+            <div class="row">
+                <div class="col-9">
+                    <label for="expyear">Exp Year</label><br>
+                    <select id="expyear" name="cardyear" form="guest-form">
+                        <option value="<%= userInfo.cardInfo.year %>"><%= userInfo.cardInfo.year %></option>
+                        <option value="2021">2021</option>
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                        <option value="2026">2026</option>
+                        <option value="2027">2027</option>
+                        <option value="2028">2028</option>
+                        <option value="2029">2029</option>
+                        <option value="2030">2030</option>
+                        <option value="2031">2031</option>
+                        <option value="2032">2032</option>
+                        <option value="2033">2033</option>
+                        <option value="2034">2034</option>
+                        <option value="2035">2035</option>
+                        <option value="2036">2036</option>
+                        <option value="2037">2037</option>
+                        <option value="2038">2038</option>
+                        <option value="2039">2039</option>
+                        <option value="2040">2040</option>
+                        <option value="2041">2041</option>
+                    </select>
+                    <br><br>
+                </div>
+                <div class="col-9">
+                    <label for="cvv">CVV</label><br>
+                    <input type="text" id="cvv" name="cardcvv" placeholder="352" form="guest-form" value="<%= userInfo.cardInfo.cvv %>"><br><br>
+                </div>
+            </div>
+            <!--Shipping and Billing-->
+            <input type="submit" class="btn btn-default btn-rounded waves-effect" value="Save All Changes" form="guest-form">
+        </div>
+    </div>
+</div>
+
+<%- include('layouts/footer.ejs') %>

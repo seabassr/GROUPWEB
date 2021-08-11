@@ -185,6 +185,44 @@ router.get('/editProfile', (req, res) => {
     res.render('editProfile', {userInfo: userInfo});
 })
 
+router.post('/editSuccess', (req, res) => {
+
+    const newUserInfo = {
+        email: req.body.email,
+        password: req.body.password,
+        fname: req.body.fname,
+        lname: req.body.lname,
+        addressInfo: {
+            address: req.body.address,
+            city: req.body.city,
+            state: req.body.state,
+            zip: req.body.zip
+        },
+        cardInfo: {
+            provider: req.body.cardprovider,
+            holder: req.body.cardname,
+            number: req.body.cardnumber,
+            month: req.body.cardmonth,
+            year: req.body.cardyear,
+            cvv: req.body.cardcvv
+        }
+    };
+
+    User.findOneAndUpdate(
+        {_id: userInfo._id},
+        newUserInfo
+    )
+    .then( result => {                      // For whatever reason, I need to do this
+        User.findOne( {_id: userInfo._id} ) // in order for the user collection to actually
+            .then( resulting => {           // update. returnNewDocument:true does nothing.
+                console.log(resulting);
+                userInfo = resulting;
+                res.render('editSuccess', {userInfo: userInfo});
+            })
+    })
+    .catch(err => console.log(err));
+});
+
 router.post('/submitUser', (req, res) => {
     User.findOne({email: req.body.email}, function(err, doc) {
         if(doc == null) {

@@ -26,6 +26,14 @@ var userSchema = new mongoose.Schema({
         zip: {
             type: Number
         }
+    },
+    cardInfo: {
+        provider: { type: String },
+        holder: { type: String },
+        number: { type: String },
+        month: { type: String },
+        year: { type: String },
+        cvv: { type: String }
     }
 });
 

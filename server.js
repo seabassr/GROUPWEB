@@ -10,8 +10,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', pagesRouter);
 
-//mongoose.connect('mongodb+srv://root:root@cluster0.ajp3f.mongodb.net/ShopDB?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false})
-mongoose.connect('mongodb://localhost:27017/ShopDB', {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false})
+mongoose.connect('mongodb+srv://root:root@cluster0.ajp3f.mongodb.net/ShopDB?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false})
     .then(() => {
         app.listen(5000, () => {
             console.log('MongoDB is connected and Express server is running...')

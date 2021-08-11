@@ -64,7 +64,11 @@
                         <td class="text-right">
                             <strong id="totalDisplay">$<%= ( totalPrice+taxPrice ).toFixed(2) %></strong>
                         </td>
+                        <% if (userInfo == null) { %>
                         <td><a style="background-color: green;" class="btn btn-rounded waves-effect" id="signInBtn2">Checkout</a></td>
+                        <% } else { %>
+                        <td><a style="background-color: green;" class="btn btn-rounded waves-effect" href="/shipping">Checkout</a></td>
+                        <% } %>
                     </tr>
                 </tfoot>
             </table>

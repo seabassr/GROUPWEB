@@ -1,10 +1,89 @@
 <%- include('layouts/header.ejs') %>
 <%- include('layouts/navbar.ejs') %>
+<%- include('layouts/shippingSelect.ejs') %>
 
 <div class="container">
     <p class="btn-outline-primary text-center" style="padding-top: 15px; padding-bottom: 15px;">
         <strong>Success! Your order has been processed. Thank you for shopping at The Soup Store.</strong>
     </p>
 </div>
+
+<div class="col-6">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Image</th>
+                <th scope="col">Title</th>
+                <th scope="col">Quantity</th>
+                <th scope="col" class="text-right">Unit Price</th>
+                <th scope="col" class="text-right">Total Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% let totalPrice = 0; %>
+            <% for (let p of products) { %>
+            <tr>
+                <td><a href="img/<%= p.category %>/<%= p.img %>.jpg"><img class="cart-preview" src="/img/<%= p.category %>/<%= p.img %>.jpg"></a></td>
+                <td><%= p.title %></td>
+                <!-- START Quantity magic stuff -->
+                <td>
+                    <label><%= p.quantity %></label>
+                </td>
+                <!-- <td>
+                    <form id="quantity-<%= p.itemId %>" action="/change-cart-quantity/<%= p.itemId %>" method="POST">
+                        <input type="number" class="hide-arrows" name="newQuantity"
+                            min="1" max="999" size="2" value="<%= p.quantity %>"
+                            onchange="document.getElementById('quantity-<%= p.itemId %>').submit();"
+                        >
+                        <input type="hidden" name="itemId" value="<%= p.itemId %>">
+                    </form>
+                </td> -->
+                <!-- END Quantity magic stuff -->
+                <td class="text-right">$<%= (p.price).toFixed(2) %></td>
+                <% totalPrice += (p.quantity * p.price); %>
+                <td class="text-right"><strong>$<%= (p.quantity * p.price).toFixed(2) %></strong></td>
+                <!-- <td><a href="/remove/<%= p.itemId %>" type="submit" class="btn btn-outline-primary btn-rounded waves-effect">Delete</a></td> -->
+            </tr>
+            <% } %>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2" class="text-right">Subtotal:</td>
+                <td class="text-right">
+                    <strong id="subtotalDisplay">$<%= totalPrice.toFixed(2) %></strong>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" class="text-right">Delivery Method:</td>
+                <td class="text-right">
+                    <!-- radio buttons -->
+                </td>
+                <td class="text-right">
+                    <strong id="shippingDisplay"></strong>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="text-right">6.25% Tax:</td>
+                <td class="text-right">
+                    <strong id="taxDisplay">
+                        <% let taxPrice = (totalPrice+25) * 0.0625 %>
+                        $<%= taxPrice.toFixed(2) %>
+                    </strong>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="text-right">Grand Total:</td>
+                <td class="text-right">
+                    <strong id="totalDisplay">$<%= ( totalPrice+25+taxPrice ).toFixed(2) %></strong>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right" colspan="5">
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
 
 <%- include('layouts/footer.ejs') %>

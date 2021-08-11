@@ -1,24 +1,8 @@
 <%- include('layouts/header.ejs') %>
 <%- include('layouts/navbar.ejs') %>
+<%- include('layouts/shippingSelect.ejs') %>
 
-<script>
-    function hackThisPlease( shippingCost ){
-        var subtotalDisplay = document.getElementById("subtotalDisplay");
-        var shippingDisplay = document.getElementById("shippingDisplay");
-        var taxDisplay = document.getElementById("taxDisplay")
-        var totalDisplay = document.getElementById("totalDisplay")
 
-        var subtotal = parseInt( subtotalDisplay.innerHTML.substring(1) );
-      
-        var shippingResult = shippingCost;
-        var taxResult = (subtotal + shippingResult) * 0.0625;
-        var totalResult =  subtotal + shippingResult + taxResult;
-
-        shippingDisplay.innerHTML = "$" + shippingResult.toFixed(2);
-        taxDisplay.innerHTML = "$" + taxResult.toFixed(2);
-        totalDisplay.innerHTML = "$" + totalResult.toFixed(2);
-    }
-</script>
 
 <div class="container">
     <br><h4><strong><%= pageTitle %></strong></h4><hr color="white">
@@ -35,6 +19,8 @@
                         <input type="text" id="fname" name="firstname" placeholder="John M. Doe" required  form="guest-form"><br><br>
                         <label for="email"><i class="fa fa-envelope"></i> Email</label><br>
                         <input type="text" id="email" name="email" placeholder="john@example.com" required form="guest-form"><br><br>
+                        <label for="phone"><i class="fa fa-phone"></i> Phone</label><br>
+                        <input type="text" id="phone" name="phone" placeholder="123-456-7890" required form="guest-form"><br><br>
                         <label for="adr"><i class="fa fa-address-card-o"></i> Address</label><br>
                         <input type="text" id="adr" name="address" placeholder="542 W. 15th Street" required form="guest-form"><br><br>
                         <label for="city"><i class="fa fa-institution"></i> City</label><br>
@@ -100,6 +86,8 @@
                         <input type="text" id="fname" name="firstname" placeholder="John M. Doe" required form="guest-form" value="<%= userInfo.fname %> <%= userInfo.lname %>"><br><br>
                         <label for="email"><i class="fa fa-envelope"></i> Email</label><br>
                         <input type="text" id="email" name="email" placeholder="john@example.com" required form="guest-form" value="<%= userInfo.email %>"><br><br>
+                        <label for="phone"><i class="fa fa-phone"></i> Phone</label><br>
+                        <input type="text" id="phone" name="phone" placeholder="123-456-7890" required form="guest-form"><br><br>
                         <label for="adr"><i class="fa fa-address-card-o"></i> Address</label><br>
                         <input type="text" id="adr" name="address" placeholder="542 W. 15th Street" required form="guest-form" value="<%= userInfo.addressInfo.address %>"><br><br>
                         <label for="city"><i class="fa fa-institution"></i> City</label><br>

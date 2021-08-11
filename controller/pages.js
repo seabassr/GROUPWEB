@@ -168,8 +168,12 @@ router.get('/remove/:itemId', (req, res) => {
 });
 
 router.post('/finalCheckout', (req, res) => {
-    Cart.collection.drop();
-        res.render('finalCheckout', {userInfo: userInfo});
+    Cart.find()
+        .then(results => {
+            res.render('finalCheckout', {userInfo: userInfo, products: results, pageTitle: 'All Items in Cart'});
+            Cart.collection.drop();
+        })
+        .catch(err => console.log(err));
 });
 
 router.get('/signout', (req, res) => {

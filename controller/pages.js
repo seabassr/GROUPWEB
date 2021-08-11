@@ -11,6 +11,7 @@ const router = express.Router();
 var userExisted = 'pass';
 var newUser = 'pass';
 var wrongPassword = 'pass';
+var userInfo = null;
 
 router.get('/', (req, res) => {
     res.render('index', {status: userExisted, register: newUser, checkPassword: wrongPassword});
@@ -125,7 +126,7 @@ router.get('/view-cart', (req, res) => {
 router.get('/shipping', (req, res) => {
     Cart.find()
         .then(results => {
-            res.render('shipping', {products: results, pageTitle: 'Shipping'});
+            res.render('shipping', {products: results, pageTitle: 'Shipping', shippingInfo: userInfo});
         })
         .catch(err => console.log(err));
 });
@@ -165,7 +166,7 @@ router.get('/remove/:itemId', (req, res) => {
 router.post('/finalCheckout', (req, res) => {
     Cart.collection.drop();
         res.render('finalCheckout');
-    });
+});
 
 router.post('/submitUser', (req, res) => {
     User.findOne({email: req.body.email}, function(err, doc) {
@@ -209,6 +210,7 @@ router.post('/loginUser', (req, res) => {
                     wrongPassword = 'pass';
                 }
                 else {
+                    userInfo = doc;
                     res.render('index', {status: userExisted, register: newUser, checkPassword: wrongPassword});
                 }
             })

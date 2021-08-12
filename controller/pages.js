@@ -168,9 +168,10 @@ router.get('/remove/:itemId', (req, res) => {
 });
 
 router.post('/finalCheckout', (req, res) => {
+    var shipCost = req.body.shipping
     Cart.find()
         .then(results => {
-            res.render('finalCheckout', {userInfo: userInfo, products: results, pageTitle: 'All Items in Cart'});
+            res.render('finalCheckout', {userInfo: userInfo, products: results, pageTitle: 'All Items in Cart', shipCost: shipCost});
             Cart.collection.drop();
         })
         .catch(err => console.log(err));

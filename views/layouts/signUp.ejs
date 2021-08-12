@@ -11,7 +11,6 @@
                 <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="Last Name" name='lname' required>
                 <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="Address" name='address' required>
                 <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="City" name='city' required>
-                <label class="active">State</label>
                 <select class="browser-default custom-select mb-4" name="state" required>
                     <option value disabled>Select Your State</option>
                     <option value="Alabama">Alabama</option>
@@ -65,8 +64,8 @@
                     <option value="West Virginia">West Virginia</option>
                     <option value="Wisconsin">Wisconsin</option>
                     <option value="Wyoming">Wyoming</option>
-                </select><br><br>
-                <input type="number" id="defaultContactFormName" class="form-control mb-4" placeholder="Zip" name="zip">
+                </select><br>
+                <input type="number" id="defaultContactFormName" class="form-control mb-4" placeholder="Zip" name="zip" required>
                 <button class="btn btn-info btn-block my-4" type="submit">Register</button>
                 <p>Already a member?<a id="signInBtnAgain"><u>Sign In</u></a></p>
             </form>

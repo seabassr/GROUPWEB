@@ -155,15 +155,29 @@
                 <p class="h4">Payment Information</p>
                 <select class="browser-default custom-select mb-4" name="ctype" required>
                     <option value disabled>Select Card Type</option>
+                    <% if( userInfo != null ) { %>
+                        <option value="<%= userInfo.cardInfo.provider %>"><%= userInfo.cardInfo.provider %></option>
+                    <% } %>
                     <option value="Visa">Visa</option>
                     <option value="American Express">American Express</option>
                     <option value="Mastercard">Mastercard</option>
                     <option value="Discover">Discover</option>
                 </select><br>
-                <input type="text" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="Name on Card" name='cname' required>
-                <input type="number" id="defaultContactFormName" class="form-control mb-4" placeholder="Credit Card Number" name='cnumber' required>
+                <input type="text" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="Name on Card" name='cname'
+                <% if( userInfo != null ) { %>
+                    value="<%= userInfo.cardInfo.holder %>"
+                <% } %>
+                required>
+                <input type="number" id="defaultContactFormName" class="form-control mb-4" placeholder="Credit Card Number" name='cnumber'
+                <% if( userInfo != null ) { %>
+                    value="<%= userInfo.cardInfo.number %>"
+                <% } %>
+                required>
                 <select class="browser-default custom-select mb-4" name="cmonth" required>
                     <option value disabled>Card Exp Month</option>
+                    <% if( userInfo != null ) { %>
+                        <option value="<%= userInfo.cardInfo.month %>"><%= userInfo.cardInfo.month %></option>
+                    <% } %>
                     <option value="01">January</option>
                     <option value="02">February</option>
                     <option value="03">March</option>
@@ -179,6 +193,9 @@
                 </select><br>
                 <select class="browser-default custom-select mb-4" name="cyear" required>
                     <option value disabled>Card Exp </option>
+                    <% if( userInfo != null ) { %>
+                        <option value="<%= userInfo.cardInfo.year %>"><%= userInfo.cardInfo.year %></option>
+                    <% } %>
                     <option value="2021">2021</option>
                     <option value="2022">2022</option>
                     <option value="2023">2023</option>
@@ -201,7 +218,11 @@
                     <option value="2040">2040</option>
                     <option value="2041">2041</option>
                 </select><br>
-                <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="CVV" name='ccvv' required>
+                <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="CVV" name='ccvv'
+                <% if( userInfo != null ) { %>
+                    value="<%= userInfo.cardInfo.cvv %>"
+                <% } %>
+                required>
             </div>
             <div class="sub-entry3">
                 <table class="table">
